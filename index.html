@@ -3,645 +3,287 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Stanford Law School · AI Student Skills</title>
-<meta name="description" content="A curated library of AI Skills for Stanford Law School students, developed with the Robert Crown Law Library. Learn AI responsibly, then download each skill with one click." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<title>Stanford Law School AI Student Skills</title>
+<meta name="description" content="AI Skills for Stanford Law students, from the Robert Crown Law Library. Download a skill and install it in ChatGPT or Claude." />
 <style>
-  /* ---------- Design tokens ---------- */
   :root {
     --cardinal: #8C1515;
     --cardinal-bright: #B1040E;
-    --radius: 22px;
-    --radius-sm: 14px;
-    --maxw: 1180px;
+    --radius: 16px;
+    --radius-sm: 11px;
+    --maxw: 1120px;
     --ease: cubic-bezier(.22,.61,.36,1);
-    --serif: "Fraunces", Georgia, "Times New Roman", serif;
-    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
   html[data-theme="dark"] {
-    --bg-0: #0e0909;
-    --bg-1: #170f0f;
-    --text: #f5efe9;
+    --bg-0: #100c0c;
+    --bg-1: #171010;
+    --text: #ece5e1;
     --text-strong: #ffffff;
-    --muted: #b6a8a1;
-    --faint: #8b7d77;
-    --accent: #ef6b62;         /* legible cardinal on dark */
-    --accent-2: #ffd7a8;
-    --glass-bg: rgba(32, 21, 21, 0.42);
-    --glass-bg-2: rgba(44, 28, 28, 0.55);
-    --glass-brd: rgba(255, 255, 255, 0.10);
-    --glass-hi: rgba(255, 255, 255, 0.14);
-    --shadow: 0 24px 60px -20px rgba(0,0,0,0.75);
+    --muted: #ab9d97;
+    --faint: #857772;
+    --accent: #ef6b62;
+    --glass-bg: rgba(30, 21, 21, 0.44);
+    --glass-bg-2: rgba(40, 27, 27, 0.5);
+    --glass-brd: rgba(255, 255, 255, 0.09);
+    --shadow: 0 14px 34px -20px rgba(0,0,0,0.7);
     --chip-bg: rgba(255,255,255,0.06);
-    --nav-bg: rgba(16, 10, 10, 0.55);
-    --glow-1: rgba(177, 4, 14, 0.45);
-    --glow-2: rgba(239, 107, 98, 0.22);
+    --nav-bg: rgba(16, 12, 12, 0.72);
+    --glow: rgba(177, 4, 14, 0.28);
   }
-
   html[data-theme="light"] {
-    --bg-0: #f3eee7;
+    --bg-0: #f4f0ea;
     --bg-1: #ffffff;
-    --text: #241c19;
-    --text-strong: #140d0b;
+    --text: #2a221f;
+    --text-strong: #17100e;
     --muted: #5f544e;
     --faint: #8a7d75;
     --accent: #8C1515;
-    --accent-2: #9a5a12;
-    --glass-bg: rgba(255, 255, 255, 0.55);
-    --glass-bg-2: rgba(255, 255, 255, 0.72);
-    --glass-brd: rgba(140, 21, 21, 0.16);
-    --glass-hi: rgba(255, 255, 255, 0.85);
-    --shadow: 0 26px 60px -28px rgba(90, 20, 20, 0.42);
+    --glass-bg: rgba(255, 255, 255, 0.62);
+    --glass-bg-2: rgba(255, 255, 255, 0.78);
+    --glass-brd: rgba(140, 21, 21, 0.15);
+    --shadow: 0 14px 30px -22px rgba(90, 20, 20, 0.4);
     --chip-bg: rgba(140, 21, 21, 0.06);
-    --nav-bg: rgba(247, 243, 237, 0.62);
-    --glow-1: rgba(177, 4, 14, 0.20);
-    --glow-2: rgba(214, 120, 40, 0.14);
+    --nav-bg: rgba(244, 240, 234, 0.78);
+    --glow: rgba(177, 4, 14, 0.12);
   }
 
   * { box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
-
   body {
     margin: 0;
     font-family: var(--sans);
     color: var(--text);
-    background: var(--bg-0);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    transition: background .5s var(--ease), color .35s var(--ease);
-  }
-
-  /* ---------- Ambient background ---------- */
-  .aurora {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
     background:
-      radial-gradient(60% 55% at 78% 8%, var(--glow-1), transparent 60%),
-      radial-gradient(50% 50% at 12% 22%, var(--glow-2), transparent 62%),
-      radial-gradient(70% 60% at 50% 108%, var(--glow-1), transparent 65%),
-      linear-gradient(180deg, var(--bg-0), var(--bg-1) 55%, var(--bg-0));
-    transition: background .5s var(--ease);
+      radial-gradient(55% 40% at 85% 0%, var(--glow), transparent 60%),
+      radial-gradient(50% 40% at 5% 12%, var(--glow), transparent 62%),
+      linear-gradient(180deg, var(--bg-0), var(--bg-1) 60%, var(--bg-0));
+    background-attachment: fixed;
+    line-height: 1.6;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    transition: background .4s var(--ease), color .3s var(--ease);
   }
-  .grain {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    opacity: .5;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-  }
-
   a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
 
-  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
-
-  /* ---------- Nav ---------- */
-  header.nav {
+  /* ---- Top bar (no logo) ---- */
+  .bar {
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(18px) saturate(160%);
-    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(150%);
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
     background: var(--nav-bg);
     border-bottom: 1px solid var(--glass-brd);
   }
-  .nav-in {
-    max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
-    display: flex; align-items: center; gap: 18px;
+  .bar-in { max-width: var(--maxw); margin: 0 auto; padding: 11px 22px; display: flex; align-items: center; gap: 4px; }
+  .bar a.link {
+    padding: 7px 12px; border-radius: 8px; font-size: 13.5px; color: var(--muted); font-weight: 500;
+    transition: color .2s, background .2s;
   }
-  .brand { display: flex; align-items: center; gap: 13px; font-weight: 600; }
-  .seal {
-    width: 40px; height: 40px; border-radius: 11px; flex: 0 0 auto;
-    display: grid; place-items: center;
-    background: linear-gradient(145deg, var(--cardinal), var(--cardinal-bright));
-    color: #fff; font-family: var(--serif); font-weight: 700; font-size: 15px;
-    letter-spacing: .5px;
-    box-shadow: 0 6px 18px -6px rgba(140,21,21,.7), inset 0 1px 0 rgba(255,255,255,.35);
+  .bar a.link:hover { color: var(--text-strong); background: var(--chip-bg); }
+  .bar .spacer { flex: 1; }
+  .toggle {
+    display: inline-flex; align-items: center; gap: 7px;
+    border: 1px solid var(--glass-brd); background: var(--chip-bg); color: var(--text);
+    border-radius: 8px; padding: 7px 11px; cursor: pointer; font-family: var(--sans);
+    font-size: 12.5px; font-weight: 500; transition: border-color .2s;
   }
-  .brand-txt { display: flex; flex-direction: column; line-height: 1.15; }
-  .brand-txt b { font-weight: 600; font-size: 15px; color: var(--text-strong); letter-spacing: .2px; }
-  .brand-txt span { font-size: 11.5px; color: var(--faint); letter-spacing: .3px; }
-  .nav-links { margin-left: auto; display: flex; align-items: center; gap: 6px; }
-  .nav-links a {
-    padding: 8px 14px; border-radius: 999px; font-size: 14px; color: var(--muted);
-    font-weight: 500; transition: color .2s, background .2s;
-  }
-  .nav-links a:hover { color: var(--text-strong); background: var(--chip-bg); }
+  .toggle:hover { border-color: var(--accent); }
+  .toggle svg { width: 15px; height: 15px; }
 
-  .theme-toggle {
-    display: inline-flex; align-items: center; gap: 8px;
-    border: 1px solid var(--glass-brd); background: var(--chip-bg);
-    color: var(--text); border-radius: 999px; padding: 8px 12px;
-    cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 500;
-    transition: transform .2s var(--ease), border-color .2s, background .2s;
-  }
-  .theme-toggle:hover { transform: translateY(-1px); border-color: var(--accent); }
-  .theme-toggle svg { width: 17px; height: 17px; }
-  .theme-toggle .lbl { min-width: 34px; text-align: left; }
+  /* ---- Hero ---- */
+  .hero { padding: 52px 0 26px; }
+  .kicker { font-size: 12px; letter-spacing: .13em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.7rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--text-strong); margin: 12px 0 0; }
+  .lede { max-width: 620px; margin: 14px 0 0; color: var(--muted); font-size: 1.02rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 22px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; cursor: pointer; border: 1px solid transparent; transition: transform .15s var(--ease), border-color .2s; }
+  .btn svg { width: 16px; height: 16px; }
+  .btn-primary { background: linear-gradient(135deg, var(--cardinal), var(--cardinal-bright)); color: #fff; }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { background: var(--glass-bg); color: var(--text-strong); border-color: var(--glass-brd); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .btn-ghost:hover { transform: translateY(-1px); border-color: var(--accent); }
 
-  /* ---------- Hero ---------- */
-  .hero { padding: 92px 0 40px; position: relative; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase;
-    color: var(--accent); font-weight: 600;
-    padding: 7px 15px; border-radius: 999px;
-    border: 1px solid var(--glass-brd); background: var(--glass-bg);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  }
-  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
-  h1.title {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: clamp(2.6rem, 6.2vw, 5rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    margin: 26px 0 0;
-    color: var(--text-strong);
-  }
-  h1.title em {
-    font-style: italic;
-    background: linear-gradient(105deg, var(--accent), var(--accent-2));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .lede {
-    max-width: 640px; margin: 24px 0 0; font-size: clamp(1.05rem, 1.6vw, 1.24rem);
-    color: var(--muted);
-  }
-  .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 10px;
-    padding: 14px 24px; border-radius: 999px; font-weight: 600; font-size: 15px;
-    cursor: pointer; border: 1px solid transparent;
-    transition: transform .2s var(--ease), box-shadow .3s var(--ease), background .2s;
-  }
-  .btn svg { width: 18px; height: 18px; }
-  .btn-primary {
-    background: linear-gradient(140deg, var(--cardinal), var(--cardinal-bright));
-    color: #fff;
-    box-shadow: 0 16px 34px -12px rgba(140,21,21,.75), inset 0 1px 0 rgba(255,255,255,.28);
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 44px -12px rgba(140,21,21,.85), inset 0 1px 0 rgba(255,255,255,.28); }
-  .btn-ghost {
-    background: var(--glass-bg); color: var(--text-strong);
-    border-color: var(--glass-brd);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  }
-  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+  /* ---- Sections ---- */
+  section { padding: 34px 0; }
+  .sec-head { margin-bottom: 20px; }
+  .sec-head h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.01em; color: var(--text-strong); margin: 6px 0 0; }
+  .sec-head p { color: var(--muted); margin: 7px 0 0; max-width: 660px; font-size: .97rem; }
 
-  .stats { display: flex; flex-wrap: wrap; gap: 40px; margin-top: 58px; }
-  .stat b { font-family: var(--serif); font-size: 2.1rem; font-weight: 600; color: var(--text-strong); display: block; line-height: 1; }
-  .stat span { font-size: 13px; color: var(--faint); letter-spacing: .04em; }
-
-  /* ---------- Section shells ---------- */
-  section { padding: 62px 0; }
-  .sec-head { max-width: 720px; margin-bottom: 40px; }
-  .sec-tag { font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-  .sec-head h2 {
-    font-family: var(--serif); font-weight: 600; letter-spacing: -0.015em;
-    font-size: clamp(1.9rem, 3.6vw, 2.9rem); color: var(--text-strong);
-    margin: 12px 0 0; line-height: 1.08;
-  }
-  .sec-head p { color: var(--muted); margin: 16px 0 0; font-size: 1.05rem; }
-
-  /* ---------- Glass panel (shared principles / how it works) ---------- */
-  .panel {
-    position: relative;
-    border-radius: var(--radius);
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-brd);
-    backdrop-filter: blur(22px) saturate(150%);
-    -webkit-backdrop-filter: blur(22px) saturate(150%);
-    box-shadow: var(--shadow);
-    padding: 40px;
-    overflow: hidden;
-  }
-  .panel::before {
-    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-    background: linear-gradient(160deg, var(--glass-hi), transparent 42%);
-    opacity: .6; mix-blend-mode: overlay;
-  }
-  .principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px 34px; }
-  .principle h4 { margin: 0 0 6px; font-size: 15px; color: var(--text-strong); font-weight: 600; display: flex; align-items: center; gap: 9px; }
-  .principle p { margin: 0; font-size: 14px; color: var(--muted); }
-  .p-ico { width: 22px; height: 22px; flex: 0 0 auto; color: var(--accent); }
-
-  /* ---------- Skill grid ---------- */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 26px; }
+  /* ---- Skill grid ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
   .card {
     position: relative; display: flex; flex-direction: column;
-    border-radius: var(--radius);
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-brd);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
-    box-shadow: var(--shadow);
-    padding: 28px 28px 26px;
-    overflow: hidden;
-    transition: transform .35s var(--ease), border-color .3s var(--ease);
+    border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-brd);
+    backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+    box-shadow: var(--shadow); padding: 18px 18px 16px;
+    transition: transform .2s var(--ease), border-color .2s;
   }
-  .card::before {
-    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-    background: linear-gradient(155deg, var(--glass-hi), transparent 38%);
-    opacity: .55; mix-blend-mode: overlay;
-  }
-  .card::after {
-    content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px;
-    background: linear-gradient(90deg, var(--cardinal), var(--cardinal-bright), transparent);
-    opacity: 0; transition: opacity .3s var(--ease);
-  }
-  .card:hover { transform: translateY(-6px); border-color: var(--accent); }
-  .card:hover::after { opacity: 1; }
-
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
-  .num {
-    font-family: var(--serif); font-size: 13px; font-weight: 600; letter-spacing: .1em;
-    color: var(--accent); border: 1px solid var(--glass-brd); border-radius: 8px;
-    padding: 3px 9px; background: var(--chip-bg);
-  }
-  .badge {
-    font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
-    padding: 5px 11px; border-radius: 999px; white-space: nowrap;
-  }
+  .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card-top { display: flex; align-items: center; gap: 8px; }
+  .num { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent); }
+  .badge { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; }
   .badge.core { color: #fff; background: linear-gradient(135deg, var(--cardinal), var(--cardinal-bright)); }
   .badge.studio { color: var(--accent); border: 1px solid var(--glass-brd); background: var(--chip-bg); }
+  .card h3 { font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; color: var(--text-strong); margin: 10px 0 0; line-height: 1.2; }
+  .card .desc { color: var(--muted); font-size: 13.5px; margin: 8px 0 0; }
+  .card-foot { margin-top: 15px; padding-top: 13px; border-top: 1px solid var(--glass-brd); display: flex; align-items: center; gap: 10px; }
+  .dl { display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: 9px; font-weight: 600; font-size: 13px; color: #fff; background: linear-gradient(135deg, var(--cardinal), var(--cardinal-bright)); transition: transform .15s var(--ease); }
+  .dl:hover { transform: translateY(-1px); }
+  .dl svg { width: 15px; height: 15px; }
+  .plat { margin-left: auto; font-size: 11.5px; color: var(--faint); }
 
-  .card h3 { font-family: var(--serif); font-weight: 600; font-size: 1.42rem; letter-spacing: -0.01em; color: var(--text-strong); margin: 18px 0 0; line-height: 1.12; }
-  .tagline { color: var(--accent); font-size: 13.5px; font-weight: 600; margin: 9px 0 0; }
-  .desc { color: var(--muted); font-size: 14.5px; margin: 14px 0 0; }
+  /* ---- Install ---- */
+  .install-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .panel { border-radius: var(--radius); background: var(--glass-bg); border: 1px solid var(--glass-brd); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: var(--shadow); padding: 20px; }
+  .panel h3 { margin: 0 0 4px; font-size: 1.12rem; color: var(--text-strong); font-weight: 700; }
+  .panel .plat-tag { font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); }
+  .vid { position: relative; width: 100%; aspect-ratio: 16/10; margin: 14px 0; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--glass-brd); background: rgba(0,0,0,.25); }
+  .vid iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  ol.steps { margin: 4px 0 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; }
+  ol.steps li { position: relative; padding-left: 32px; font-size: 13.5px; color: var(--text); }
+  ol.steps li b { color: var(--text-strong); }
+  ol.steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: linear-gradient(135deg, var(--cardinal), var(--cardinal-bright)); }
+  .note { margin-top: 16px; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--chip-bg); border: 1px solid var(--glass-brd); font-size: 13px; color: var(--muted); }
+  .note b { color: var(--text-strong); }
+  .help { margin-top: 14px; font-size: 13px; color: var(--faint); }
+  .help a { color: var(--accent); font-weight: 600; }
 
-  .feat { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 9px; }
-  .feat li { position: relative; padding-left: 26px; font-size: 13.5px; color: var(--text); }
-  .feat li::before {
-    content: ""; position: absolute; left: 0; top: 7px; width: 14px; height: 14px;
-    background: var(--accent);
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat;
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E") center/contain no-repeat;
-  }
-
-  .card-foot { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--glass-brd); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .dl {
-    display: inline-flex; align-items: center; gap: 9px; flex: 1;
-    justify-content: center; padding: 12px 18px; border-radius: 12px;
-    font-weight: 600; font-size: 14px; color: #fff;
-    background: linear-gradient(135deg, var(--cardinal), var(--cardinal-bright));
-    box-shadow: 0 12px 26px -12px rgba(140,21,21,.7), inset 0 1px 0 rgba(255,255,255,.25);
-    transition: transform .2s var(--ease), box-shadow .3s var(--ease);
-  }
-  .dl:hover { transform: translateY(-2px); box-shadow: 0 18px 34px -12px rgba(140,21,21,.85), inset 0 1px 0 rgba(255,255,255,.25); }
-  .dl svg { width: 17px; height: 17px; }
-  .size { font-size: 12px; color: var(--faint); white-space: nowrap; }
-
-  /* ---------- How it works ---------- */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; }
-  .step { position: relative; padding: 26px; border-radius: var(--radius-sm); background: var(--glass-bg-2); border: 1px solid var(--glass-brd); }
-  .step .n { font-family: var(--serif); font-size: 2.2rem; font-weight: 600; color: var(--accent); line-height: 1; opacity: .85; }
-  .step h4 { margin: 12px 0 6px; color: var(--text-strong); font-size: 16px; }
-  .step p { margin: 0; color: var(--muted); font-size: 14px; }
-  .step code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; background: var(--chip-bg); padding: 2px 6px; border-radius: 6px; color: var(--accent); }
-
-  /* ---------- Footer ---------- */
-  footer { padding: 62px 0 48px; border-top: 1px solid var(--glass-brd); margin-top: 30px; }
-  .foot-grid { display: flex; flex-wrap: wrap; gap: 30px; align-items: flex-start; justify-content: space-between; }
-  .foot-brand { max-width: 420px; }
-  .foot-brand p { color: var(--muted); font-size: 14px; margin: 14px 0 0; }
-  .contact {
-    display: inline-flex; align-items: center; gap: 10px; margin-top: 18px;
-    padding: 12px 18px; border-radius: 12px; font-weight: 600; font-size: 14px;
-    color: var(--text-strong); background: var(--glass-bg); border: 1px solid var(--glass-brd);
-    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-    transition: border-color .2s, transform .2s var(--ease);
-  }
-  .contact:hover { border-color: var(--accent); transform: translateY(-2px); }
-  .foot-cols { display: flex; gap: 56px; flex-wrap: wrap; }
-  .foot-col h5 { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); margin: 0 0 14px; font-weight: 600; }
-  .foot-col a { display: block; color: var(--muted); font-size: 14px; padding: 4px 0; transition: color .2s; }
-  .foot-col a:hover { color: var(--accent); }
-  .colophon { margin-top: 46px; padding-top: 24px; border-top: 1px solid var(--glass-brd); font-size: 12.5px; color: var(--faint); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
-
-  .disclaimer { font-size: 12.5px; color: var(--faint); margin-top: 24px; max-width: 760px; }
-
-  /* reveal animation */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .5s var(--ease), transform .5s var(--ease); }
   .reveal.in { opacity: 1; transform: none; }
 
-  @media (max-width: 640px) {
-    .nav-links a:not(.theme-anchor) { display: none; }
-    .hero { padding-top: 60px; }
-    .panel { padding: 28px 22px; }
-    .stats { gap: 26px; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { transition: none; opacity: 1; transform: none; }
-    html { scroll-behavior: auto; }
-  }
+  @media (max-width: 560px) { .bar a.link { display: none; } .bar a.link.keep { display: inline-flex; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
 </style>
 </head>
 <body>
-<div class="aurora"></div>
-<div class="grain"></div>
 
-<!-- ===== NAV ===== -->
-<header class="nav">
-  <div class="nav-in">
-    <a class="brand" href="#top" aria-label="Stanford Law School AI Skills — home">
-      <span class="seal">SLS</span>
-      <span class="brand-txt">
-        <b>AI Student Skills</b>
-        <span>Stanford Law School · Robert Crown Law Library</span>
-      </span>
-    </a>
-    <nav class="nav-links">
-      <a href="#core">Core Pathway</a>
-      <a href="#studios">Tool Studios</a>
-      <a href="#how">How it works</a>
-      <button class="theme-toggle theme-anchor" id="themeBtn" aria-label="Toggle light and dark mode">
-        <span id="themeIcon"></span><span class="lbl" id="themeLbl">Dark</span>
-      </button>
-    </nav>
-  </div>
-</header>
-
-<a id="top"></a>
-<!-- ===== HERO ===== -->
-<div class="hero wrap">
-  <span class="eyebrow reveal"><span class="dot"></span> The SLS AI Learning Pathway</span>
-  <h1 class="title reveal">Learn AI, the <em>Stanford Law</em> way.</h1>
-  <p class="lede reveal">A curated library of AI Skills built for Stanford Law students with the Robert Crown Law Library. Each one is problem-first, policy-aware, and grounded in verification — so you build judgment, not just output. Download any skill with a single click.</p>
-  <div class="cta-row reveal">
-    <a class="btn btn-primary" href="#core">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg>
-      Browse &amp; download skills
-    </a>
-    <a class="btn btn-ghost" href="#how">How it works</a>
-  </div>
-  <div class="stats reveal">
-    <div class="stat"><b>11</b><span>Downloadable skills</span></div>
-    <div class="stat"><b>5</b><span>Core pathway</span></div>
-    <div class="stat"><b>6</b><span>Tool studios</span></div>
-    <div class="stat"><b>1&nbsp;click</b><span>To get started</span></div>
+<div class="bar">
+  <div class="bar-in">
+    <a class="link keep" href="#skills">Skills</a>
+    <a class="link" href="#core">Core Pathway</a>
+    <a class="link" href="#studios">Tool Studios</a>
+    <a class="link keep" href="#install">Install</a>
+    <span class="spacer"></span>
+    <button class="toggle" id="themeBtn" aria-label="Toggle light and dark mode"><span id="themeIcon"></span><span id="themeLbl">Dark</span></button>
   </div>
 </div>
 
-<!-- ===== SHARED PRINCIPLES ===== -->
-<section class="wrap" id="principles">
-  <div class="sec-head reveal">
-    <div class="sec-tag">What every skill shares</div>
-    <h2>Designed to sharpen your judgment</h2>
-    <p>These skills follow a common set of Stanford Law principles. AI is a tool in the toolbox — useful for some clearly defined tasks, inappropriate for others, and always subject to your judgment and accountability.</p>
+<header class="hero wrap">
+  <p class="kicker reveal">Stanford Law School · Robert Crown Law Library</p>
+  <h1 class="reveal">AI Student Skills</h1>
+  <p class="lede reveal">A set of AI Skills for Stanford Law students. Each is problem-first, policy-aware, and built around verification. Download a skill, then install it in ChatGPT or Claude.</p>
+  <div class="cta reveal">
+    <a class="btn btn-primary" href="#skills"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v14"/><path d="m6 11 6 6 6-6"/><path d="M5 21h14"/></svg>Browse skills</a>
+    <a class="btn btn-ghost" href="#install">How to install</a>
   </div>
-  <div class="panel reveal">
-    <div class="principles">
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>The PAUSE Rule</h4>
-        <p>Pause before reaching for a tool: define the problem and weigh non-AI alternatives first.</p>
-      </div>
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 7v6c0 5 3.5 7.5 8 8 4.5-.5 8-3 8-8V7z"/></svg>Policy-aware</h4>
-        <p>Grounded in the SLS student AI policy and Stanford's Responsible AI guidance.</p>
-      </div>
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>Verification-first</h4>
-        <p>Every factual and legal claim gets checked in authoritative sources — model agreement is not proof.</p>
-      </div>
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>Productive struggle</h4>
-        <p>You attempt the work first. The skills scaffold learning; they never do your assessed work.</p>
-      </div>
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg>Transparent logs</h4>
-        <p>Each session produces a learning-evidence record you can keep and disclose.</p>
-      </div>
-      <div class="principle">
-        <h4><svg class="p-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>Accurate, not anthropomorphic</h4>
-        <p>Plain-language explanations of how AI works — tokens, weights, and pattern-based generation.</p>
-      </div>
-    </div>
-  </div>
-</section>
+</header>
 
-<!-- ===== CORE PATHWAY ===== -->
-<section class="wrap" id="core">
-  <div class="sec-head reveal">
-    <div class="sec-tag">Start here · in order</div>
-    <h2>The Core Pathway</h2>
-    <p>Five foundational skills that take you from your first AI orientation to auditing AI output like a lawyer. Work through them in sequence for the full pathway.</p>
+<!-- CORE -->
+<section class="wrap" id="skills">
+  <div class="sec-head reveal" id="core">
+    <p class="kicker">Start here · in order</p>
+    <h2>Core Pathway</h2>
+    <p>Five foundational skills, from your first AI orientation to auditing AI output like a lawyer.</p>
   </div>
   <div class="grid" id="coreGrid"></div>
 </section>
 
-<!-- ===== TOOL STUDIOS ===== -->
+<!-- STUDIOS -->
 <section class="wrap" id="studios">
   <div class="sec-head reveal">
-    <div class="sec-tag">Explore when you're ready</div>
-    <h2>Optional Tool Studios</h2>
-    <p>Guided, Stanford-specific introductions to the AI tools available through the Robert Crown Law Library and Stanford. Each studio is problem-first and keeps you verifying, never outsourcing.</p>
+    <p class="kicker">Explore when ready</p>
+    <h2>Tool Studios</h2>
+    <p>Guided, Stanford-specific introductions to the AI tools available through the Robert Crown Law Library and Stanford.</p>
   </div>
   <div class="grid" id="studioGrid"></div>
 </section>
 
-<!-- ===== HOW IT WORKS ===== -->
-<section class="wrap" id="how">
+<!-- INSTALL -->
+<section class="wrap" id="install">
   <div class="sec-head reveal">
-    <div class="sec-tag">Getting started</div>
-    <h2>From download to first session</h2>
-    <p>Every package is a validated <code style="font-family:ui-monospace,Menlo,monospace;font-size:.9em">skill.zip</code> containing its <code style="font-family:ui-monospace,Menlo,monospace;font-size:.9em">SKILL.md</code>, ChatGPT interface metadata, and supporting Stanford Law references.</p>
+    <p class="kicker">Getting started</p>
+    <h2>Install a skill</h2>
+    <p>Each skill is a small <code>.zip</code> — a Markdown instruction file plus references. You never open it: download once, upload to ChatGPT or Claude, then work in plain English. You only add the ZIP once; after that the skill is available across chats.</p>
   </div>
-  <div class="steps">
-    <div class="step reveal"><div class="n">1</div><h4>Download the skill</h4><p>Click the button on any card to download that skill's <code>skill.zip</code> straight from this repository.</p></div>
-    <div class="step reveal"><div class="n">2</div><h4>Import into your assistant</h4><p>Load the skill into your AI assistant — for example as a ChatGPT project or a Claude Skill — using the bundled metadata.</p></div>
-    <div class="step reveal"><div class="n">3</div><h4>Start from your problem</h4><p>Open with the task you're actually trying to learn. The skill applies the PAUSE Rule and policy checks before anything else.</p></div>
-    <div class="step reveal"><div class="n">4</div><h4>Keep your evidence</h4><p>Save the learning-evidence record the skill produces so your AI use stays transparent and disclosable.</p></div>
+  <div class="install-grid">
+    <div class="panel reveal">
+      <p class="plat-tag">For ChatGPT</p>
+      <h3>Install in ChatGPT</h3>
+      <div class="vid"><iframe src="https://drive.google.com/file/d/1U6j814O6CARktBdoXGrMNHzanFbVvjaS/preview" title="Screen recording: add and call a skill in ChatGPT" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <ol class="steps">
+        <li><b>Download</b> the skill ZIP. Keep it zipped.</li>
+        <li><b>Upload once</b> where you manage Skills or custom GPT knowledge, and wait for the upload to finish.</li>
+        <li><b>Start</b> with your goal in plain language, e.g. “Help me brief this case.”</li>
+      </ol>
+    </div>
+    <div class="panel reveal">
+      <p class="plat-tag">For Claude</p>
+      <h3>Install in Claude</h3>
+      <div class="vid"><iframe src="https://drive.google.com/file/d/1bLTqOLtblNt-oZgqGs3FtGGk85tBDKMN/preview" title="Screen recording: adding a skill in Claude" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+      <ol class="steps">
+        <li><b>Download</b> the skill ZIP. Do not unzip it.</li>
+        <li><b>Add it to Claude</b> in the project or Skill area, then confirm the skill appears as available.</li>
+        <li><b>Use natural language</b> — start with your goal and ask Claude to use the skill.</li>
+      </ol>
+    </div>
   </div>
-  <p class="disclaimer reveal">Access to RCLL-provided tools is limited to current SLS community members and ends after graduation; requests are manually approved and authenticate with Stanford SSO / SUNet. Do not assume every publicly advertised vendor feature is enabled for SLS, and always confirm your course's AI policy with the instructor. For AI tools, access, technical help, tool selection, or legal-research support, contact the Robert Crown Law Library.</p>
+  <p class="help">Access to RCLL-provided tools is limited to current SLS community members and uses Stanford SSO. Confirm your course’s AI policy with the instructor. For access, tools, or research help, contact <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>.</p>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="wrap">
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <a class="brand" href="#top">
-        <span class="seal">SLS</span>
-        <span class="brand-txt"><b>AI Student Skills</b><span>Stanford Law School · Robert Crown Law Library</span></span>
-      </a>
-      <p>The first release of student-facing AI Skills developed for Stanford Law School and the Robert Crown Law Library.</p>
-      <a class="contact" href="mailto:library@law.stanford.edu">
-        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        library@law.stanford.edu
-      </a>
-    </div>
-    <div class="foot-cols">
-      <div class="foot-col">
-        <h5>Start here</h5>
-        <a href="https://bit.ly/rcll-aiessentials" target="_blank" rel="noopener">AI Essentials Training</a>
-        <a href="https://sites.google.com/law.stanford.edu/ailearninghub/" target="_blank" rel="noopener">AI Learning Hub</a>
-        <a href="https://ai-at-rcll.vercel.app/" target="_blank" rel="noopener">AI in the Library</a>
-        <a href="https://law.stanford.edu/ai-initiative/" target="_blank" rel="noopener">SLS AI Initiative</a>
-      </div>
-      <div class="foot-col">
-        <h5>Tools &amp; access</h5>
-        <a href="http://bit.ly/rcll-legalairequest" target="_blank" rel="noopener">Request tool access</a>
-        <a href="https://uit.stanford.edu/service/aiplayground" target="_blank" rel="noopener">Stanford AI Playground</a>
-        <a href="https://uit.stanford.edu/service/gsuite/notebooklm" target="_blank" rel="noopener">NotebookLM</a>
-        <a href="#core">All skills</a>
-      </div>
-    </div>
-  </div>
-  <div class="colophon">
-    <span>© Stanford Law School · Robert Crown Law Library. For the SLS community.</span>
-    <span>Course-permission questions belong with your instructor.</span>
-  </div>
-</footer>
-
 <script>
-/* ---------- Skill data ---------- */
 const SKILLS = [
-  {
-    n: "01", cat: "core", name: "SLS AI Orientation",
-    zip: "skills/sls-ai-orientation/sls-ai-orientation/skill.zip",
-    file: "sls-ai-orientation.zip",
-    tagline: "Start here — what AI is, what the rules are, and how to use it well.",
-    desc: "Your first stop on the SLS AI pathway. Learn in plain language how generative AI actually works — no myths — then meet the SLS student AI policy, Stanford's Responsible AI guidance, and the PAUSE Rule, and build a personal learning-and-disclosure practice you'll reuse in every course.",
-    feats: ["Plain-language, non-anthropomorphic explanation of AI", "The SLS policy and Responsible AI guidance", "PAUSE, the New York Times Rule, and the Empty Room Test", "Your first AI learning agreement and evidence record"]
-  },
-  {
-    n: "02", cat: "core", name: "SLS AI Task-Fit Coach",
-    zip: "skills/sls-ai-orientation/sls-ai-task-fit-coach/skill.zip",
-    file: "sls-ai-task-fit-coach.zip",
-    tagline: "Should you use AI for this? Get a reasoned decision, not a tool tip.",
-    desc: "Before you reach for a tool, this coach decides whether AI is permitted, educationally appropriate, and technically the right fit for a specific task. It weighs course permission, learning integrity, data readiness, and your ability to verify — then hands you an AI Learning Plan with a clear go / no-go outcome.",
-    feats: ["Checks permission, work status, and learning integrity", "Compares AI with databases, software, and manual work", "Produces an AI Learning Plan with four possible outcomes", "Builds in verification and disclosure from the start"]
-  },
-  {
-    n: "03", cat: "core", name: "SLS Case Learning Coach",
-    zip: "skills/sls-ai-orientation/sls-case-learning-coach/skill.zip",
-    file: "sls-case-learning-coach.zip",
-    tagline: "Learn to read and brief cases — without outsourcing the thinking.",
-    desc: "A Socratic partner for judicial opinions. You read the case first; the coach then asks targeted questions, points you back to the text, and helps you sharpen your own brief. It never hands you a submission-ready brief or invents facts — it protects the productive struggle that builds real skill.",
-    feats: ["Think-first protocol grounded in the actual opinion", "Socratic questioning instead of ready-made answers", "Catches unsupported leaps and omitted reasoning", "Creates a record of your analysis and revisions"]
-  },
-  {
-    n: "04", cat: "core", name: "SLS Legal Research Learning Coach",
-    zip: "skills/sls-ai-orientation/sls-legal-research-learning-coach/skill.zip",
-    file: "sls-legal-research-learning-coach.zip",
-    tagline: "A traditional-research-first workflow that uses AI only where it truly helps.",
-    desc: "Learn source-grounded legal research the right way. You draft a research plan and validate authorities in authoritative systems first; permitted AI comes in only for comparison, organization, or stress-testing. Every step is captured in a Verified Research Trail.",
-    feats: ["Define question, jurisdiction, date, and deliverable", "Route to the right RCLL databases, guides, and librarians", "Verify existence, currency, treatment, and quotations", "Keep an AI-use log and Verified Research Trail"]
-  },
-  {
-    n: "05", cat: "core", name: "SLS AI Verification Lab",
-    zip: "skills/sls-ai-orientation/sls-ai-verification-lab/skill.zip",
-    file: "sls-ai-verification-lab.zip",
-    tagline: "Train your eye to catch fabricated citations and unsupported claims.",
-    desc: "Hands-on practice auditing AI-generated legal output. Break output into atomic claims, predict what's risky, and verify each item in authoritative sources — distinguishing whether an authority exists from whether it actually supports the point. You leave with a claim-by-claim audit and sharper instincts.",
-    feats: ["Atomic-claim breakdown of AI output", "Existence vs. support vs. current-validity checks", "Practice on real or clearly-labeled synthetic output", "A claim-by-claim audit with corrections and confidence"]
-  },
-  {
-    n: "06", cat: "studio", name: "SLS Harvey Learning Studio",
-    zip: "skills/sls-ai-orientation/sls-harvey-learning-studio/skill.zip",
-    file: "sls-harvey-learning-studio.zip",
-    tagline: "A guided, SLS-specific introduction to Harvey AI.",
-    desc: "Learn Harvey the way SLS intends — problem first, feature second. The studio checks current Harvey Academy guidance, separates publicly advertised features from those confirmed for SLS, and builds a bounded practice exercise that keeps you verifying sources instead of outsourcing assessed work.",
-    feats: ["Access via RCLL and Stanford SSO", "Current feature checks against Harvey Academy", "Problem-first, bounded practice exercises", "Compare Harvey's output with an authoritative database"]
-  },
-  {
-    n: "07", cat: "studio", name: "SLS Legora Learning Studio",
-    zip: "skills/sls-ai-orientation/sls-legora-learning-studio/skill.zip",
-    file: "sls-legora-learning-studio.zip",
-    tagline: "Explore Legora for legal-workflow learning, grounded in verification.",
-    desc: "A current, SLS-specific walkthrough of Legora. Map your non-AI workflow, see where Legora may or may not help, and practice on public, synthetic, or approved documents — always inspecting sources and comparing against a database or manual approach.",
-    feats: ["Distinguishes advertised from SLS-enabled features", "Maps where Legora fits your workflow — and where it doesn't", "Source inspection and legal verification built in", "A recommendation on appropriate future use"]
-  },
-  {
-    n: "08", cat: "studio", name: "SLS LexText Learning Studio",
-    zip: "skills/sls-ai-orientation/sls-lextext-learning-studio/skill.zip",
-    file: "sls-lextext-learning-studio.zip",
-    tagline: "A guided first look at LexText for approved learning tasks.",
-    desc: "Decide whether LexText fits a task, then learn a current feature through a focused, safe practice exercise. The studio weighs time saved against the verification burden and your skill development, so you build judgment — not just output.",
-    feats: ["Fit check vs. databases, software, and other RCLL tools", "Accurate, non-promotional feature explanations", "Practice with safe, structured materials", "Time-saved vs. verification-burden reflection"]
-  },
-  {
-    n: "09", cat: "studio", name: "SLS CICERO Oral Argument Studio",
-    zip: "skills/sls-ai-orientation/sls-cicero-oral-argument-studio/skill.zip",
-    file: "sls-cicero-oral-argument-studio.zip",
-    tagline: "Prepare, practice, and debrief oral argument with Rhetoric CICERO.",
-    desc: "Get ready for an oral-argument simulation the right way. Build your question presented, argument map, and practice goals; draft answers independently; run the simulation in CICERO; then reconstruct the hard questions and turn feedback into a focused improvement plan. AI feedback supplements — never replaces — faculty and expert review.",
-    feats: ["Argument map, standard of review, and practice goals", "Independent drafting before feedback", "Directs the live simulation to CICERO", "Pre/post evidence and a focused improvement plan"]
-  },
-  {
-    n: "10", cat: "studio", name: "SLS NotebookLM Learning Studio",
-    zip: "skills/sls-ai-orientation/sls-notebooklm-learning-studio/skill.zip",
-    file: "sls-notebooklm-learning-studio.zip",
-    tagline: "Source-grounded study with a curated, manageable set of readings.",
-    desc: "Use Stanford-provided NotebookLM for disciplined, source-grounded learning. Build a purposeful source set (no semester-wide “junkyard” uploads), inspect every cited passage, and compare NotebookLM's synthesis against your own to catch omissions and overstatements.",
-    feats: ["Source inventory and corpus design before uploading", "Source-linked questions, comparisons, and practice sets", "Inspect cited passages — don't take them on faith", "A learning log instead of submission-ready work"]
-  },
-  {
-    n: "11", cat: "studio", name: "SLS AI Tool Explorer",
-    zip: "skills/sls-ai-orientation/sls-ai-tool-explorer/skill.zip",
-    file: "sls-ai-tool-explorer.zip",
-    tagline: "Bring any AI tool or feature — get a clear, current, guided tutorial.",
-    desc: "Name, link, or describe any AI tool and get an accessible, up-to-date introduction. The explorer checks official Stanford, RCLL, and vendor sources, explains what the tool does and doesn't do, and builds beginner, intermediate, and advanced activities plus a verification task — all starting from your problem, not a product tour.",
-    feats: ["Works with any tool you name, link, or describe", "Checks current official Stanford/RCLL/vendor sources", "5-minute intro, 15-minute tutorial, advanced challenge", "Verification task and transfer reflection"]
-  }
+  { n:"01", cat:"core", name:"SLS AI Orientation", zip:"skills/sls-ai-orientation/sls-ai-orientation/skill.zip", file:"sls-ai-orientation.zip",
+    desc:"Start here: how AI actually works, the SLS student AI policy, the PAUSE Rule, and your first learning-and-disclosure record." },
+  { n:"02", cat:"core", name:"SLS AI Task-Fit Coach", zip:"skills/sls-ai-orientation/sls-ai-task-fit-coach/skill.zip", file:"sls-ai-task-fit-coach.zip",
+    desc:"Decide whether AI is permitted, appropriate, and the right fit for a task — and get an AI Learning Plan with a clear go / no-go." },
+  { n:"03", cat:"core", name:"SLS Case Learning Coach", zip:"skills/sls-ai-orientation/sls-case-learning-coach/skill.zip", file:"sls-case-learning-coach.zip",
+    desc:"A Socratic partner for reading and briefing opinions. You attempt first; it questions, points to the text, and never writes your brief." },
+  { n:"04", cat:"core", name:"SLS Legal Research Learning Coach", zip:"skills/sls-ai-orientation/sls-legal-research-learning-coach/skill.zip", file:"sls-legal-research-learning-coach.zip",
+    desc:"A traditional-research-first workflow: validate authorities in authoritative sources, then use permitted AI to compare and stress-test." },
+  { n:"05", cat:"core", name:"SLS AI Verification Lab", zip:"skills/sls-ai-orientation/sls-ai-verification-lab/skill.zip", file:"sls-ai-verification-lab.zip",
+    desc:"Audit AI output claim by claim — checking whether authorities exist, are current, and actually support the point." },
+  { n:"06", cat:"studio", name:"SLS Harvey Learning Studio", zip:"skills/sls-ai-orientation/sls-harvey-learning-studio/skill.zip", file:"sls-harvey-learning-studio.zip",
+    desc:"A problem-first, SLS-specific introduction to Harvey AI, with bounded practice and source verification." },
+  { n:"07", cat:"studio", name:"SLS Legora Learning Studio", zip:"skills/sls-ai-orientation/sls-legora-learning-studio/skill.zip", file:"sls-legora-learning-studio.zip",
+    desc:"Map your workflow, see where Legora helps, and practice on safe documents while verifying every source." },
+  { n:"08", cat:"studio", name:"SLS LexText Learning Studio", zip:"skills/sls-ai-orientation/sls-lextext-learning-studio/skill.zip", file:"sls-lextext-learning-studio.zip",
+    desc:"Decide whether LexText fits a task, then learn a current feature through focused, safe practice." },
+  { n:"09", cat:"studio", name:"SLS CICERO Oral Argument Studio", zip:"skills/sls-ai-orientation/sls-cicero-oral-argument-studio/skill.zip", file:"sls-cicero-oral-argument-studio.zip",
+    desc:"Prep an argument map and goals, run the simulation in CICERO, and debrief into a focused improvement plan." },
+  { n:"10", cat:"studio", name:"SLS NotebookLM Learning Studio", zip:"skills/sls-ai-orientation/sls-notebooklm-learning-studio/skill.zip", file:"sls-notebooklm-learning-studio.zip",
+    desc:"Source-grounded study with a curated set of readings — inspect every cited passage instead of trusting it." },
+  { n:"11", cat:"studio", name:"SLS AI Tool Explorer", zip:"skills/sls-ai-orientation/sls-ai-tool-explorer/skill.zip", file:"sls-ai-tool-explorer.zip",
+    desc:"Bring any AI tool or feature and get a current, guided tutorial that starts from your problem." }
 ];
-
 const dlIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
-
-function cardHTML(s) {
-  const feats = s.feats.map(f => `<li>${f}</li>`).join("");
-  const badge = s.cat === "core"
-    ? '<span class="badge core">Core Pathway</span>'
-    : '<span class="badge studio">Tool Studio</span>';
-  return `
-    <article class="card reveal">
-      <div class="card-top">
-        <span class="num">${s.n}</span>
-        ${badge}
-      </div>
-      <h3>${s.name}</h3>
-      <p class="tagline">${s.tagline}</p>
-      <p class="desc">${s.desc}</p>
-      <ul class="feat">${feats}</ul>
-      <div class="card-foot">
-        <a class="dl" href="${s.zip}" download="${s.file}">${dlIcon} Download skill</a>
-        <span class="size">.zip</span>
-      </div>
-    </article>`;
+function card(s){
+  const badge = s.cat==="core" ? '<span class="badge core">Core</span>' : '<span class="badge studio">Studio</span>';
+  return `<article class="card reveal">
+    <div class="card-top"><span class="num">${s.n}</span>${badge}</div>
+    <h3>${s.name}</h3>
+    <p class="desc">${s.desc}</p>
+    <div class="card-foot">
+      <a class="dl" href="${s.zip}" download="${s.file}">${dlIcon} Download</a>
+      <span class="plat">ChatGPT · Claude</span>
+    </div>
+  </article>`;
 }
+document.getElementById("coreGrid").innerHTML = SKILLS.filter(s=>s.cat==="core").map(card).join("");
+document.getElementById("studioGrid").innerHTML = SKILLS.filter(s=>s.cat==="studio").map(card).join("");
 
-document.getElementById("coreGrid").innerHTML =
-  SKILLS.filter(s => s.cat === "core").map(cardHTML).join("");
-document.getElementById("studioGrid").innerHTML =
-  SKILLS.filter(s => s.cat === "studio").map(cardHTML).join("");
-
-/* ---------- Theme toggle ---------- */
-const sun = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>';
-const moon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>';
-const root = document.documentElement;
-const iconEl = document.getElementById("themeIcon");
-const lblEl = document.getElementById("themeLbl");
-
-function applyTheme(t) {
-  root.setAttribute("data-theme", t);
-  iconEl.innerHTML = t === "dark" ? moon : sun;
-  lblEl.textContent = t === "dark" ? "Dark" : "Light";
-  try { localStorage.setItem("sls-theme", t); } catch (e) {}
-}
-let saved = null;
-try { saved = localStorage.getItem("sls-theme"); } catch (e) {}
-if (!saved) saved = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>';
+const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>';
+const root=document.documentElement, iconEl=document.getElementById("themeIcon"), lblEl=document.getElementById("themeLbl");
+function applyTheme(t){ root.setAttribute("data-theme",t); iconEl.innerHTML=t==="dark"?moon:sun; lblEl.textContent=t==="dark"?"Dark":"Light"; try{localStorage.setItem("sls-theme",t);}catch(e){} }
+let saved=null; try{saved=localStorage.getItem("sls-theme");}catch(e){}
+if(!saved) saved=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";
 applyTheme(saved);
-document.getElementById("themeBtn").addEventListener("click", () => {
-  applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
-});
+document.getElementById("themeBtn").addEventListener("click",()=>applyTheme(root.getAttribute("data-theme")==="dark"?"light":"dark"));
 
-/* ---------- Reveal on scroll ---------- */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
