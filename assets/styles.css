@@ -2779,9 +2779,11 @@ body.hasEmbed { overflow: hidden; }
 .embedPanel iframe { display: block; width: 100%; height: 100%; border: 0; }
 .embedPanel.tall { height: 620px; }
 .embedPanel.board { height: 560px; }
+.embedPanel.publicationsEmbed { height: max(720px, 80vh); }
 @media (max-width: 640px) {
   .embedPanel.tall { height: 520px; }
   .embedPanel.board { height: 620px; }
+  .embedPanel.publicationsEmbed { height: 680px; }
 }
 
 /* ---- Event listings ------------------------------------------------------- */
