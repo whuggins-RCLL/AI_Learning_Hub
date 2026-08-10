@@ -2750,3 +2750,66 @@ body.hasEmbed .siteHeader { position: static; flex: 0 0 auto; }
 /* Inside the comparison grid the blocks are laid out by the grid's own gap, so
    the vertical margin a standalone .promptBlock carries would double it. */
 .promptComparison.grid .promptBlock { margin: 0; }
+
+/* ---- Posters ---------------------------------------------------------------
+   The training and framework posters are the content, not decoration, so they
+   are shown at a size worth reading and each one keeps its own aspect ratio.
+   object-fit is deliberately absent: these are posters full of small type, and
+   cropping one to a uniform tile would cut the text off. */
+.posterGrid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.4rem); margin: 1.3rem 0 0;
+}
+.posterFigure { margin: 0; }
+.posterFigure img {
+  display: block; width: 100%; height: auto;
+  border-radius: 16px; border: 1px solid var(--glass-border);
+  background: #fff;
+  box-shadow: var(--glass-shadow);
+}
+.posterFigure figcaption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted); }
+/* A poster is a flat image with its own white ground, so on the dark theme it
+   sits as a bright rectangle. Dimming it slightly stops it glaring against the
+   glass without washing out the type. */
+:root[data-theme="dark"] .posterFigure img { filter: brightness(0.94); }
+
+/* ---- Inline embeds --------------------------------------------------------
+   Panels that hold a third-party frame inside the normal flow of a page — the
+   week-at-a-glance board and the event calendar — as distinct from the
+   full-page .embedFrame. Height is explicit because the framed document cannot
+   report its own, and both of these have a fixed amount to show. */
+.embedPanel {
+  position: relative; margin: 1.2rem 0 0;
+  border-radius: 18px; overflow: hidden;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+}
+.embedPanel iframe { display: block; width: 100%; height: 100%; border: 0; }
+.embedPanel.tall { height: 620px; }
+.embedPanel.board { height: 560px; }
+@media (max-width: 640px) {
+  .embedPanel.tall { height: 520px; }
+  .embedPanel.board { height: 620px; }
+}
+
+/* ---- Event listings ------------------------------------------------------- */
+/* One session per row inside a card: title, then the facts, then what it covered.
+   The meta line is a definition-free list of short facts, so it wraps as a row of
+   items rather than stacking into five short lines. */
+.eventMeta {
+  display: flex; flex-wrap: wrap; gap: 0.3rem 1.1rem;
+  margin: 0 0 0.6rem; font-size: 0.88rem; color: var(--muted);
+}
+.eventMeta > span { display: inline-flex; gap: 0.35rem; }
+.eventMeta b { font-weight: 650; color: var(--ink); }
+.eventCard { display: flex; flex-direction: column; }
+.eventCard h3 { margin: 0 0 0.5rem; font-size: 1.08rem; }
+.eventCard .actions { margin-top: auto; }
+.eventCard .actions .secondary { min-height: 40px; padding: 0.45rem 0.95rem; font-size: 0.87rem; }
+/* Sessions whose materials are not up yet say so in words. It is the same
+   information the pill dot carries, because colour is never the only signal. */
+.materialsPending {
+  margin-top: auto; padding-top: 0.6rem;
+  font-size: 0.87rem; font-style: italic; color: var(--muted);
+}

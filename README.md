@@ -23,13 +23,44 @@ python3 -m http.server 8000
 | File | What it is |
 | --- | --- |
 | `index.html` | The hub landing page |
-| `pause-rule.html` | The PAUSE Rule — the AI use workflow, ported from the previous hub site |
+| `pause-rule.html` | The PAUSE Rule — the AI use workflow |
+| `tutorials.html` | The tutorial library: eight topics, ~34 guides and DIY modules |
+| `ai-resources.html` | AI tools available to the SLS community, and the policy that governs them |
+| `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
+| `past-events.html` | Archive of past sessions and Tech Club meetings |
 | `skills.html` | The eleven downloadable AI skills |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `faculty.html` | Full-page embed of the faculty AI site |
 | `ai-upload.html` | Full-page embed of The AI Upload, the weekly AI news digest |
 | `assets/styles.css` | The design system |
 | `assets/hub.js` | The theme toggle and the collapsing navigation |
+
+All of it is ported from the previous AI Learning Hub, which was a set of
+standalone Tailwind and React pages, into the one design system below.
+
+### Navigation
+
+The header bar holds six destinations and no more. That is the width at which a
+seventh wraps the bar onto a second row, measured on the faculty site with the same
+logo and type. Everything else — install, past events, the two embeds, the outbound
+links — is reachable from the footer.
+
+The bar and footer are the same markup on all ten pages, which no one should be
+retyping ten times. They are written by `scripts/nav.py`: it replaces the
+`.siteHeader` and `.footer` block in each file in place and is idempotent. The
+committed pages stay plain HTML with no build step, so an ordinary edit is still an
+ordinary edit; re-run the script after changing a nav entry.
+
+```
+python3 scripts/nav.py
+```
+
+### Content that is data, not markup
+
+`tutorials.html` keeps its ~34 tutorials in one array at the bottom of the file and
+renders the cards from it, which is how the previous hub's tutorials page worked
+too. Adding a tutorial is one entry rather than a block of copied HTML. Everything
+else is written out as HTML.
 
 ### Styling
 
