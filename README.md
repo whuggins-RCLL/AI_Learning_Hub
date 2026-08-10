@@ -43,10 +43,10 @@ standalone Tailwind and React pages, into the one design system below.
 
 ### Navigation
 
-The header bar holds six destinations and no more. That is the width at which a
-seventh wraps the bar onto a second row, measured on the faculty site with the same
-logo and type. The logo is the home link, so Home is not repeated in the bar. The
-six are The AI Upload, Tutorials, Resources, Events, Skills, and Faculty.
+The header's primary row holds six destinations and no more. A utility row above
+it places a Home button and a site-scoped search at the top right. The six primary
+destinations are The AI Upload, Tutorials, Resources, Events, Skills, and Faulty
+Support.
 
 Everything else — the PAUSE Rule, AI in the Library, install, past events, AI
 Essentials, Slack, and outbound Stanford links — is reachable from the footer.
@@ -110,9 +110,10 @@ Rule's gates and verdicts, the skill cards, the embed pages). Keeping the shared
 part an unmodified copy is deliberate: a change to the design system is a re-copy
 plus a look at the additions, not a merge.
 
-Two things the faculty site has that the hub deliberately does not: a search form,
-which needs a server to post to, and an account link, since there is nothing to
-sign in to. The header is destinations only.
+The static site search submits to Google and is scoped at runtime to the hostname
+serving the hub, so the repository remains portable without a search server or a
+hard-coded deployment domain. The hub has no account link because there is nothing
+to sign in to.
 
 ### The embedded sites
 

@@ -101,6 +101,13 @@
     });
   }
 
+  // Keep Google results scoped to whichever host serves the static hub. This
+  // avoids baking a deployment domain into the otherwise portable HTML.
+  function wireSearch() {
+    var scope = document.querySelector(".siteSearchScope");
+    if (scope) scope.value = window.location.hostname;
+  }
+
   // The two embed pages are a frame and nothing else — no header to collapse and
   // nothing of ours left to theme — so they do not load this file at all. The
   // guard is here so that adding it back by accident cannot drop a floating
@@ -108,5 +115,6 @@
   if (!document.body.classList.contains("hasEmbed")) {
     buildThemeToggle();
     wireNav();
+    wireSearch();
   }
 })();
