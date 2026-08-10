@@ -13,18 +13,16 @@ import sys
 # The repository root, relative to this file, so the script runs from anywhere.
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# The header bar, capped at six destinations. The faculty site measured six as the
-# point where a seventh link wraps the bar onto a second row at laptop widths, and
-# this bar carries the same logo and type at the same sizes. The logo is the home
-# link, so Home is not repeated here. Faculty support sits in the bar; the PAUSE
-# Rule and other secondary routes stay in the footer.
+# The header's primary row is capped at six destinations. Home and search are
+# utility actions in their own row above it, so they do not compete with these
+# section links at laptop widths.
 NAV = [
     ("ai-upload.html", "The AI Upload"),
     ("tutorials.html", "Tutorials"),
     ("ai-resources.html", "Resources"),
     ("events.html", "Events"),
     ("skills.html", "Skills"),
-    ("faculty.html", "Faculty"),
+    ("faculty.html", "Faulty Support"),
 ]
 
 EXT = '<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span>'
@@ -86,12 +84,23 @@ def header_html(current):
   <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
     <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
   </a>
-  <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
-    <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
-  </button>
-  <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+  <div class="headerNavigation">
+    <div class="headerTools">
+      <a class="homeButton" href="index.html">Home</a>
+      <form class="siteSearch" action="https://www.google.com/search" method="get" role="search">
+        <label class="srOnly" for="site-search">Search the AI Learning Hub</label>
+        <input id="site-search" name="q" type="search" placeholder="Search" required />
+        <input class="siteSearchScope" name="sitesearch" type="hidden" value="" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
 {joined}
-  </nav>
+    </nav>
+  </div>
 </header>"""
 
 

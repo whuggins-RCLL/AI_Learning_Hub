@@ -18,17 +18,28 @@
   <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
     <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
   </a>
-  <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
-    <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
-  </button>
-  <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+  <div class="headerNavigation">
+    <div class="headerTools">
+      <a class="homeButton" href="index.html">Home</a>
+      <form class="siteSearch" action="https://www.google.com/search" method="get" role="search">
+        <label class="srOnly" for="site-search">Search the AI Learning Hub</label>
+        <input id="site-search" name="q" type="search" placeholder="Search" required />
+        <input class="siteSearchScope" name="sitesearch" type="hidden" value="" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
     <a href="ai-upload.html">The AI Upload</a>
     <a href="tutorials.html">Tutorials</a>
     <a href="ai-resources.html">Resources</a>
     <a href="events.html">Events</a>
     <a href="skills.html">Skills</a>
-    <a href="faculty.html">Faculty</a>
-  </nav>
+    <a href="faculty.html">Faulty Support</a>
+    </nav>
+  </div>
 </header>
 
 <main id="main">
