@@ -133,11 +133,11 @@ def footer_html():
 HEADER_RE = re.compile(r'<header class="siteHeader">.*?</header>', re.S)
 FOOTER_RE = re.compile(r'<footer class="footer">.*?</footer>', re.S)
 
-# The two pages that are a full-viewport frame and nothing else. Both framed
+# The pages that are a full-viewport frame and nothing else. The framed
 # sites carry their own navigation, so putting this site's bar above one would
 # show a reader two sets of destinations at once. They get no header and no
 # footer, and this script leaves them alone.
-EMBED_PAGES = {"faculty.html", "ai-upload.html"}
+EMBED_PAGES = {"faculty.html", "faculty-publications.html", "ai-upload.html"}
 
 
 def main():

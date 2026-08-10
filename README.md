@@ -34,6 +34,7 @@ python3 -m http.server 8000
 | `skills.html` | The eleven downloadable AI skills |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `faculty.html` | Full-page embed of the faculty AI site |
+| `faculty-publications.html` | Full-page embed of SLS faculty publications on AI |
 | `ai-upload.html` | Full-page embed of The AI Upload, the weekly AI news digest |
 | `assets/styles.css` | The design system |
 | `assets/hub.js` | The theme toggle and the collapsing navigation |
@@ -117,13 +118,13 @@ to sign in to.
 
 ### The embedded sites
 
-`faculty.html` and `ai-upload.html` frame
-`sls-faculty-ai-skills.vercel.app` and `ai-upload-stanford-law.vercel.app`.
+`faculty.html`, `faculty-publications.html`, and `ai-upload.html` frame the faculty
+AI site, the Stanford Law School faculty AI publications list, and The AI Upload.
 
 Each is the frame and nothing else: no header, no footer, no explanatory strip, no
-theme toggle. Both framed sites carry their own navigation and their own branding,
+theme toggle. The framed sites carry their own navigation and their own branding,
 so a bar of ours above one would put two sets of destinations on the same screen.
-`scripts/nav.py` skips these two, and fails loudly if either ever grows a
+`scripts/nav.py` skips these pages, and fails loudly if any ever grows a
 `.siteHeader` block.
 
 Because there is no chrome to measure around, the frame is simply the viewport —
