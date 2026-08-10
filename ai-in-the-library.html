@@ -409,7 +409,8 @@ function itemCard(item) {
       ${details}${modules}${links}
     </div>`;
   const hasPosters = posterUrls.length > 0;
-  return `<article class="card exhibitCard${hasPosters ? " hasPosters" : ""}">
+  const multi = posterUrls.length > 1 ? " multiPoster" : "";
+  return `<article class="card exhibitCard${hasPosters ? " hasPosters" : ""}${multi}">
     ${body}${posters}
   </article>`;
 }
