@@ -26,6 +26,7 @@ python3 -m http.server 8000
 | `pause-rule.html` | The PAUSE Rule — the AI use workflow |
 | `tutorials.html` | The tutorial library: eight topics, ~34 guides and DIY modules |
 | `ai-resources.html` | AI tools available to the SLS community, and the policy that governs them |
+| `ai-in-the-library.html` | The library's AI display: 7 parts, 24 panels, 32 books |
 | `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
 | `skills.html` | The eleven downloadable AI skills |
@@ -42,12 +43,17 @@ standalone Tailwind and React pages, into the one design system below.
 
 The header bar holds six destinations and no more. That is the width at which a
 seventh wraps the bar onto a second row, measured on the faculty site with the same
-logo and type. Everything else — install, past events, the two embeds, the outbound
-links — is reachable from the footer.
+logo and type. Everything else — the PAUSE Rule, AI in the Library, install, past
+events, the faculty embed, the outbound links — is reachable from the footer.
 
-The bar and footer are the same markup on all ten pages, which no one should be
-retyping ten times. They are written by `scripts/nav.py`: it replaces the
-`.siteHeader` and `.footer` block in each file in place and is idempotent. The
+The PAUSE Rule is not in the bar. It is read once and referred back to, where The
+AI Upload is a new reason to return every Friday, and a bar slot is worth more to
+the second than the first. The Rule keeps the footer's first entry, the home hero's
+primary action, and its own destination card.
+
+The bar and footer are the same markup on every page that has them, which no one
+should be retyping eleven times. They are written by `scripts/nav.py`: it replaces
+the `.siteHeader` and `.footer` block in each file in place and is idempotent. The
 committed pages stay plain HTML with no build step, so an ordinary edit is still an
 ordinary edit; re-run the script after changing a nav entry.
 
@@ -57,10 +63,35 @@ python3 scripts/nav.py
 
 ### Content that is data, not markup
 
-`tutorials.html` keeps its ~34 tutorials in one array at the bottom of the file and
-renders the cards from it, which is how the previous hub's tutorials page worked
-too. Adding a tutorial is one entry rather than a block of copied HTML. Everything
+Two pages keep their content in one array at the bottom of the file and render the
+cards from it, because both are lists that grow and an entry beats a block of copied
+HTML: `tutorials.html` (~34 tutorials) and `ai-in-the-library.html` (7 categories, 24
+panels, 32 books). The previous hub's tutorials page worked the same way. Everything
 else is written out as HTML.
+
+### AI in the Library
+
+`ai-in-the-library.html` was its own repository —
+`whuggins-RCLL/AI-at-the-Robert-Crown-Law-Library`, a Vite + React app deployed at
+`ai-at-rcll.vercel.app`. All of its content is here now: 7 categories, 24 exhibit
+panels, 32 books, the About notes, and the acknowledgments. Nothing in the hub links
+to the old deployment any more, so that repository can be retired.
+
+Two of the app's features did **not** come across, and both were deliberate:
+
+- **The Gemini "AI Curator" chat.** It needed a Google GenAI key. Vite inlines
+  `VITE_API_KEY` into the client bundle, so on a public static site that key is a
+  published key. The hub has no build step and no secret handling, and adding both to
+  carry one chat widget was not the trade we wanted.
+- **The reading-list PDF export**, which needed jsPDF. Each book's SearchWorks link
+  is the durable version of the same thing.
+
+The app also fetched book covers at runtime from the Open Library and Google Books
+APIs. Covers here come from Open Library by ISBN as a plain image URL
+(`covers.openlibrary.org/b/isbn/<isbn>-M.jpg?default=false`) rather than an API call.
+`default=false` makes a missing cover a 404 instead of a blank placeholder, and an
+`onerror` handler then removes the element so the card reflows to text. Books whose
+covers the display had scanned itself keep those.
 
 ### Styling
 
