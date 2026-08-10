@@ -54,6 +54,7 @@ FOOTER_GROUPS = [
             ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes"),
             link("pause-rule.html", "The PAUSE Rule"),
             link("ai-in-the-library.html", "AI in the Library"),
+            link("reading-list.html", "AI reading list"),
             link("past-events.html", "Past events"),
             link("install.html", "Install a skill"),
             ext_link("https://stanford.enterprise.slack.com/", "SLS Tech Chat on Slack", "#techchat"),
