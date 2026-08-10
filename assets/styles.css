@@ -2707,7 +2707,7 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .installVideo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ---- Full-page embeds ----------------------------------------------------
-   The faculty site and The AI Upload are shown whole, and nothing of this site
+   The faculty sites and The AI Upload are shown whole, and nothing of this site
    is shown around them: no header, no strip, no theme toggle. Both framed sites
    have their own navigation and their own branding, so hub chrome above one
    would put two sets of destinations on the same screen, and a floating theme

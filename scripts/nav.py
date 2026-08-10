@@ -137,7 +137,7 @@ FOOTER_RE = re.compile(r'<footer class="footer">.*?</footer>', re.S)
 # sites carry their own navigation, so putting this site's bar above one would
 # show a reader two sets of destinations at once. They get no header and no
 # footer, and this script leaves them alone.
-EMBED_PAGES = {"faculty.html", "ai-upload.html"}
+EMBED_PAGES = {"faculty.html", "faculty-publications.html", "ai-upload.html"}
 
 
 def main():
