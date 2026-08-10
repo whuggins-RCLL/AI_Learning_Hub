@@ -1882,8 +1882,8 @@ img.mediaAsset {
 .footer-inner p { margin: 0; }
 .footer a { color: var(--ink); }
 
-/* The footer lists secondary hub pages and outbound Stanford links — not the
-   six bar destinations. Grouped with a heading each for screen-reader skip. */
+/* The footer lists outbound Stanford links, grouped under a heading for
+   screen-reader navigation. */
 .footerNav {
   display: grid; gap: 1.4rem clamp(1.2rem, 4vw, 3rem);
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
@@ -1900,11 +1900,6 @@ img.mediaAsset {
   color: var(--link-hover); border-bottom-color: currentColor;
 }
 .footerNote { display: block; font-size: 0.82rem; color: var(--muted); }
-.footerHelp {
-  margin: 0; padding-top: 1.2rem;
-  border-top: 1px solid var(--glass-hairline);
-}
-
 /* ---- Responsive ------------------------------------------------------------ */
 @media (max-width: 860px) {
   .hero, .homeHero, .grid, .grid.two, .grid.four, .videoDemo, .md-demo, .collectionGrid, .resourceGrid { grid-template-columns: 1fr; }
