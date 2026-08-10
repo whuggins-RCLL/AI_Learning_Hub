@@ -2790,3 +2790,77 @@ body.hasEmbed { overflow: hidden; }
   margin-top: auto; padding-top: 0.6rem;
   font-size: 0.87rem; font-style: italic; color: var(--muted);
 }
+
+/* ============================================================================
+   AI in the Library
+   ---------------------------------------------------------------------------
+   The library's physical AI display, brought into the hub. It was a separate
+   Vite + React app; this is the same content as static pages in this design
+   system. The app's Gemini "AI Curator" chat did not come across — it needed an
+   API key, and a key shipped to the browser of a public static site is a
+   published key.
+   ========================================================================== */
+
+/* Each exhibit panel keeps the emoji the display used. It is decorative — the
+   title carries the meaning — so it is aria-hidden in the markup and sized like
+   the module discs rather than like text. */
+.exhibitCard { display: flex; flex-direction: column; }
+.exhibitHead { display: flex; align-items: flex-start; gap: 0.7rem; margin-bottom: 0.5rem; }
+.exhibitIcon {
+  flex: 0 0 2.4rem; width: 2.4rem; height: 2.4rem;
+  display: grid; place-items: center;
+  border-radius: 50%; border: 1px solid rgba(140, 21, 21, 0.4);
+  background: linear-gradient(150deg, rgba(140, 21, 21, 0.28), rgba(169, 121, 31, 0.18));
+  font-size: 1.15rem; line-height: 1;
+}
+.exhibitHeadText { min-width: 0; }
+.exhibitHeadText .eyebrow { margin-bottom: 0.1rem; }
+.exhibitHeadText h3 { margin: 0; }
+/* The panel image, at card width. These are poster designs full of small type,
+   so they are never cropped — see .posterFigure above, same reasoning. */
+.exhibitCard .posterFigure { margin: 0.9rem 0 0; }
+.exhibitCard > :last-child { margin-bottom: 0; }
+/* The ten-part course lists its modules in order, so it is an <ol>. */
+.moduleList { margin: 0.9rem 0 0; padding-left: 1.3rem; font-size: 0.92rem; }
+.moduleList li { margin-bottom: 0.25rem; }
+
+/* ---- The book collection --------------------------------------------------
+   Thirty-two titles, each with a cover, the publication facts, and why it is
+   worth reading. Wider minimum than the card grids: a cover beside a paragraph
+   needs room, and below that width the pair stacks instead. */
+.bookGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(0.9rem, 2vw, 1.3rem); margin-top: 1.3rem;
+}
+.bookCard { display: flex; gap: 1.1rem; align-items: flex-start; }
+.bookCover {
+  flex: 0 0 5.5rem; width: 5.5rem;
+  border-radius: 6px; border: 1px solid var(--glass-border);
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.6);
+}
+.bookBody { min-width: 0; }
+.bookBody h3 { margin: 0 0 0.2rem; font-size: 1rem; line-height: 1.3; }
+.bookAuthor { margin: 0 0 0.35rem; font-size: 0.92rem; font-weight: 650; }
+.bookFacts { margin: 0 0 0.5rem; font-size: 0.82rem; color: var(--muted); }
+.bookBody p:last-child { margin-bottom: 0; }
+.bookBlurb { font-size: 0.9rem; color: var(--muted); }
+@media (max-width: 460px) {
+  /* At this width the cover leaves the blurb about 12 characters a line. */
+  .bookCard { flex-direction: column; }
+  .bookCover { flex-basis: auto; width: 6.5rem; }
+}
+
+/* The About section's own note: this exhibit was built with AI, and says so. */
+.processNote {
+  margin: 1.4rem 0 0; padding: 1.1rem 1.3rem;
+  border: 1px solid var(--glass-border); border-left: 4px solid var(--gold);
+  border-radius: 8px 18px 18px 8px; background: var(--glass-bg-strong);
+}
+.processNote > :last-child { margin-bottom: 0; }
+
+/* Acknowledgments: names and roles, as a list rather than prose. */
+.creditGroup { margin-top: 1.2rem; }
+.creditGroup h3 { margin: 0 0 0.5rem; font-size: 1.02rem; }
+.creditList { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
+.creditList li { font-size: 0.95rem; }

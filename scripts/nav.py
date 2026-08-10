@@ -19,7 +19,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 # reachable from the footer.
 NAV = [
     ("index.html", "Home"),
-    ("pause-rule.html", "The PAUSE Rule"),
+    # The AI Upload took the PAUSE Rule's slot here. The Rule is read once and
+    # referred back to; the digest is a new reason to return every Friday, which is
+    # what a bar slot is worth. The Rule keeps the footer's first entry, the home
+    # hero's primary action, and its own destination card.
+    ("ai-upload.html", "The AI Upload"),
     ("tutorials.html", "Tutorials"),
     ("ai-resources.html", "Resources"),
     ("events.html", "Events"),
@@ -60,7 +64,8 @@ FOOTER_GROUPS = [
         [
             link("events.html", "Events and Curiosity Corners"),
             link("past-events.html", "Past events", "Materials and recordings"),
-            link("ai-upload.html", "The AI Upload", "Weekly AI news digest"),
+            link("ai-in-the-library.html", "AI in the Library", "The library&rsquo;s AI display"),
+            # The AI Upload is not repeated here: it is in the bar now.
             link("faculty.html", "Faculty AI site", "Sign-in required"),
             ext_link("https://stanford.enterprise.slack.com/", "SLS Tech Chat on Slack", "#techchat"),
         ],
@@ -76,7 +81,9 @@ FOOTER_GROUPS = [
                 "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
                 "Use of Generative AI at SLS",
             ),
-            ext_link("https://ai-at-rcll.vercel.app/", "AI in the Library display"),
+            # The AI in the Library display used to be listed here as an outbound
+            # link to its own deployment. It is a page on this site now, so it
+            # moved to "Community and reading" — it is no longer elsewhere.
         ],
     ),
 ]
