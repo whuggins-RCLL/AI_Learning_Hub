@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark light" />
+<title>Faculty AI site | AI Learning Hub | Stanford Law School</title>
+<meta name="description" content="The Robert Crown Law Library's AI and technology support site for SLS faculty, shown in full. Stanford sign-in required." />
+<link rel="stylesheet" href="assets/styles.css" />
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
+</head>
+<body class="hasEmbed">
+<a class="skip" href="#embed">Skip to the embedded site</a>
+
+<header class="siteHeader">
+  <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
+    <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
+  </a>
+  <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+    <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="pause-rule.html">The PAUSE Rule</a>
+    <a href="skills.html">Skills</a>
+    <a href="install.html">Install</a>
+    <a href="faculty.html" aria-current="page">Faculty Site</a>
+    <a href="ai-upload.html">The AI Upload</a>
+  </nav>
+</header>
+
+<!-- The strip above the frame. A signed-in faculty member sees the site below it;
+     everyone else sees its sign-in page, which is the correct outcome rather than
+     an error. Either way the new-tab link is the reliable route: a Stanford
+     sign-in inside a frame — and this frame is itself inside a Google Site — is
+     the case browsers restrict, so it is offered up front instead of after a
+     failure. -->
+<div class="embedBar">
+  <p>
+    <strong>Faculty AI and technology support</strong> &mdash; Stanford sign-in required. If the panel below
+    stays on the sign-in screen, open it in its own tab.
+  </p>
+  <a class="secondary" href="https://sls-faculty-ai-skills.vercel.app/" target="_blank" rel="noopener noreferrer">
+    Open in a new tab<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span>
+  </a>
+</div>
+
+<iframe
+  id="embed"
+  class="embedFrame"
+  src="https://sls-faculty-ai-skills.vercel.app/"
+  title="AI and Technology Support for SLS Faculty"
+  allow="clipboard-write"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
+
+<script src="assets/hub.js"></script>
+</body>
+</html>

@@ -1,177 +1,202 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Stanford Law School AI Student Skills</title>
-<meta name="description" content="AI Skills for Stanford Law students, from the Robert Crown Law Library. Download a skill and install it in ChatGPT or Claude." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />
-<script>try{document.documentElement.setAttribute("data-theme",localStorage.getItem("theme")==="light"?"light":"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
-<style>
-:root{--cardinal:#8c1515;--cardinal-bright:#b23a3a;--gold:#a9791f;--ink:#f3ede4;--muted:#b3a99c;--paper:#17130f;--paper-2:#1f1913;--glass-bg:rgba(40,33,28,.55);--glass-bg-strong:rgba(46,38,31,.72);--glass-border:rgba(255,255,255,.14);--glass-hairline:rgba(255,255,255,.1);--glass-shadow:0 20px 48px -18px rgba(48,20,12,.28);--glass-shadow-lg:0 40px 80px -28px rgba(48,20,12,.36);--glass-blur:saturate(180%) blur(22px);--focus:#1a56db;--radius:22px;--radius-lg:30px;--maxw:1160px;--ease:cubic-bezier(.22,.61,.36,1);--sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,ui-sans-serif,system-ui,sans-serif;--serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif}
-html[data-theme="light"]{--ink:#1c1a17;--muted:#5f574f;--paper:#f4efe8;--paper-2:#efe7db;--glass-bg:rgba(255,255,255,.55);--glass-bg-strong:rgba(255,255,255,.72);--glass-border:rgba(255,255,255,.65);--glass-hairline:rgba(28,26,23,.08);--glass-shadow:0 20px 48px -18px rgba(0,0,0,.6);--glass-shadow-lg:0 40px 80px -28px rgba(0,0,0,.7);--focus:#7aa2ff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;overflow-x:hidden;background:var(--paper);color:var(--ink);font:1.02rem/1.6 var(--sans);letter-spacing:-.005em;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}body::before{content:"";position:fixed;inset:-20vmax;z-index:-1;pointer-events:none;background:radial-gradient(42vmax 42vmax at 12% -8%,rgba(224,106,106,.2),transparent 60%),radial-gradient(38vmax 38vmax at 96% 4%,rgba(217,173,85,.16),transparent 62%),radial-gradient(46vmax 46vmax at 78% 96%,rgba(140,21,21,.3),transparent 60%),radial-gradient(40vmax 40vmax at 4% 92%,rgba(80,100,150,.2),transparent 60%);filter:blur(6px)}a{color:inherit;text-decoration:none}.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.1rem,4vw,3rem)}:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip{position:fixed;left:12px;top:-60px;z-index:200;background:var(--cardinal);color:#fff;padding:10px 16px;border-radius:8px;font-weight:700}.skip:focus{top:12px}
-.bar{position:fixed;inset:0 0 auto;z-index:100;background:rgba(12,10,8,.68);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-hairline)}[data-theme="light"] .bar{background:rgba(255,255,255,.82);box-shadow:0 8px 24px -20px #000}.bar-in{max-width:var(--maxw);min-height:72px;margin:auto;padding:.7rem clamp(1rem,4vw,3rem);display:flex;align-items:center;gap:1rem}.brand{font-family:var(--serif);font-size:clamp(1.2rem,2.4vw,1.55rem);font-weight:600;white-space:nowrap}.primary{display:flex;align-items:center;justify-content:flex-end;gap:.2rem;flex:1}.bar a.link{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .85rem;border-radius:999px;color:var(--muted);font-size:.875rem;font-weight:600;white-space:nowrap}.bar a.link:hover,.bar a.link[aria-current="page"]{color:var(--ink);background:var(--glass-bg)}.menu-toggle{display:none;width:48px;height:48px;margin-left:auto;border:1px solid var(--glass-border);border-radius:50%;background:var(--glass-bg);color:var(--ink);padding:0;cursor:pointer}.menu-toggle span{display:block;width:20px;height:2px;margin:4px auto;background:currentColor;transition:transform .2s,opacity .2s}.menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(6px) rotate(45deg)}.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-6px) rotate(-45deg)}
-.toggle{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);z-index:110;display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--glass-border);border-radius:50%;background:var(--glass-bg-strong);color:var(--ink);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);cursor:pointer}.toggle:hover{border-color:var(--gold)}.toggle svg{width:21px;height:21px}
-main{max-width:var(--maxw);margin-inline:auto;padding:clamp(6rem,10vw,7.5rem) clamp(1.1rem,4vw,3rem) 4rem}.hero{padding:clamp(2rem,7vw,4rem) 0 .5rem}h1,h2{font-family:var(--serif);font-weight:600;color:var(--ink)}h1{font-size:clamp(2.3rem,5.5vw,4.2rem);line-height:1.03;letter-spacing:-.02em;margin:0}h2{font-size:clamp(1.5rem,2.8vw,2.15rem);line-height:1.15;letter-spacing:-.015em}.lede{font-size:clamp(1.12rem,1.7vw,1.34rem);line-height:1.5;color:var(--muted);max-width:62ch;margin:1rem 0 0}section{padding-block:clamp(1.6rem,4vw,3rem);scroll-margin-top:72px}.sec-head{margin-bottom:1.25rem}.kicker,.plat-tag{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0}.sec-head h2{margin:.35rem 0 0}.sec-head p:not(.kicker){color:var(--muted);margin:.45rem 0 0;max-width:660px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:1rem}.card,.panel{border-radius:var(--radius);background:var(--glass-bg);border:1px solid var(--glass-border);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);padding:clamp(1rem,4vw,1.3rem)}.card{display:flex;flex-direction:column;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:var(--gold)}.card-top{display:flex;align-items:center;gap:.5rem}.num{font-size:.72rem;font-weight:700;color:var(--gold)}.badge{margin-left:auto;font-size:.66rem;font-weight:700;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px}.badge.core{color:#fff;background:var(--cardinal)}.badge.studio{color:var(--gold);border:1px solid var(--glass-border)}.card h3,.panel h3{font-size:1.1rem;line-height:1.25;margin:.65rem 0 0}.desc,.help{color:var(--muted);font-size:.875rem}.divider{margin-top:.9rem;border-top:1px solid var(--glass-hairline)}.card-foot{margin-top:auto;padding-top:.9rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}.dl{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:.55rem 1rem;border-radius:999px;font-weight:700;font-size:.84rem;color:#fff;background:var(--cardinal);transition:transform .15s,background .15s}.dl:hover{transform:translateY(-1px);background:var(--cardinal-bright)}.dl svg{width:16px;height:16px}.plat{margin-left:auto;font-size:.75rem;color:var(--muted)}.install-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1rem}.vid{position:relative;width:100%;aspect-ratio:16/10;margin:1rem 0;border-radius:14px;overflow:hidden;border:1px solid var(--glass-border);background:#0004}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.steps{margin:.25rem 0 0;padding:0;list-style:none;counter-reset:s;display:grid;gap:.65rem}.steps li{position:relative;padding-left:2.2rem;font-size:.875rem}.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;font-size:.75rem;font-weight:700;color:#fff;background:var(--cardinal)}code{background:var(--glass-bg);padding:.1rem .35rem;border-radius:5px}.help a{color:var(--gold);font-weight:700;text-decoration:underline}.site-footer{border-top:1px solid var(--glass-hairline);background:var(--glass-bg);backdrop-filter:var(--glass-blur);color:var(--muted)}.footer-in{max-width:var(--maxw);margin:auto;padding:2rem clamp(1.1rem,4vw,3rem)}.footer-in p{margin:.25rem 0}.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s,transform .5s}.reveal.in{opacity:1;transform:none}
-@media(max-width:860px){.brand{display:none}.bar-in{justify-content:flex-end}.menu-toggle{display:block}.primary{display:none;position:absolute;left:0;right:0;top:100%;max-height:calc(100vh - 72px);overflow-y:auto;padding:1rem;background:var(--glass-bg-strong);backdrop-filter:var(--glass-blur);border-bottom:1px solid var(--glass-border);flex-direction:column;align-items:stretch}.primary.open{display:flex}.bar a.link{justify-content:center;width:100%}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.card:hover,.dl:hover{transform:none}}
-</style>
-
-<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<title>The AI Learning Hub | Stanford Law School</title>
+<meta name="description" content="The Robert Crown Law Library's AI Learning Hub for Stanford Law School — the PAUSE Rule, downloadable AI skills for ChatGPT and Claude, and the weekly AI Upload. Open to the whole SLS community, no sign-in required." />
+<link rel="stylesheet" href="assets/styles.css" />
+<!-- Applies the saved theme before first paint, so a reader who chose light
+     mode does not see a dark flash. Mirrors the faculty site's layout.tsx. -->
+<script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<a class="skip" href="#skills">Skip to content</a>
-
-<div class="bar">
-  <div class="bar-in">
-    <a class="brand" href="#skills" aria-label="AI Learning Hub home">AI Learning Hub</a>
-    <button class="menu-toggle" id="menuBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primaryNav"><span></span><span></span><span></span></button>
-    <nav id="primaryNav" class="primary" aria-label="Primary">
-      <a class="link" href="#skills" aria-current="page">Skills</a>
-      <a class="link sub" href="#core">Core Pathway</a>
-      <a class="link sub" href="#studios">Tool Studios</a>
-      <a class="link" href="#install">Install</a>
-    </nav>
-  </div>
-</div>
-
-<main>
-<header class="hero wrap">
-  <h1 class="reveal">AI Student Skills</h1>
-  <p class="lede reveal">A set of AI Skills for Stanford Law students. Each is problem-first, policy-aware, and built around verification. Download a skill, then install it in ChatGPT or Claude.</p>
+<header class="siteHeader">
+  <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
+    <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
+  </a>
+  <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+    <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="pause-rule.html">The PAUSE Rule</a>
+    <a href="skills.html">Skills</a>
+    <a href="install.html">Install</a>
+    <a href="faculty.html">Faculty Site</a>
+    <a href="ai-upload.html">The AI Upload</a>
+  </nav>
 </header>
 
-<!-- CORE -->
-<section class="wrap" id="skills" aria-labelledby="core-h">
-  <div class="sec-head reveal" id="core">
-    <p class="kicker">Start here · in order</p>
-    <h2 id="core-h">Core Pathway</h2>
-    <p>Five foundational skills, from your first AI orientation to auditing AI output like a lawyer.</p>
-  </div>
-  <div class="grid" id="coreGrid"></div>
-</section>
+<main id="main">
 
-<!-- STUDIOS -->
-<section class="wrap" id="studios" aria-labelledby="studios-h">
-  <div class="sec-head reveal">
-    <p class="kicker">Explore when ready</p>
-    <h2 id="studios-h">Tool Studios</h2>
-    <p>Guided, Stanford-specific introductions to the AI tools available through the Robert Crown Law Library and Stanford.</p>
-  </div>
-  <div class="grid" id="studioGrid"></div>
-</section>
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow-row">
+        <p class="eyebrow">Robert Crown Law Library</p>
+        <span class="pill"><span class="dot" aria-hidden="true"></span>Open to all of SLS</span>
+      </div>
+      <h1>The AI Learning Hub</h1>
+      <p class="lede">
+        Practical AI guidance for everyone at Stanford Law School &mdash; students, staff, and faculty.
+        Decide whether AI belongs in a task, download a ready-made skill for ChatGPT or Claude, and keep
+        up with what changed this week. No sign-in required.
+      </p>
+      <div class="actions">
+        <a class="primary" href="pause-rule.html">Start with the PAUSE Rule</a>
+        <a class="secondary" href="skills.html">Browse AI skills</a>
+      </div>
+    </div>
+    <aside class="card hero-card">
+      <h3>Before you use AI</h3>
+      <p class="muted">Five gates, in order. Any one of them can end the answer at &ldquo;not this task.&rdquo;</p>
+      <ul class="gateList">
+        <li><b>P</b> Pinpoint your task</li>
+        <li><b>A</b> Assess AI&#8209;fit</li>
+        <li><b>U</b> Use ethically</li>
+        <li><b>S</b> Self&#8209;assess your skills</li>
+        <li><b>E</b> Enhance your workflow</li>
+      </ul>
+      <a class="explore" href="pause-rule.html">Read the full workflow &rarr;</a>
+    </aside>
+  </section>
 
-<!-- INSTALL -->
-<section class="wrap" id="install" aria-labelledby="install-h">
-  <div class="sec-head reveal">
-    <p class="kicker">Getting started</p>
-    <h2 id="install-h">Install a skill</h2>
-    <p>Each skill is a small <code>.zip</code> — a Markdown instruction file plus references. You never open it: download once, upload to ChatGPT or Claude, then work in plain English. You only add the ZIP once; after that the skill is available across chats.</p>
-  </div>
-  <div class="install-grid">
-    <div class="panel reveal">
-      <p class="plat-tag">For ChatGPT</p>
-      <h3>Install in ChatGPT</h3>
-      <div class="vid"><iframe src="https://drive.google.com/file/d/1U6j814O6CARktBdoXGrMNHzanFbVvjaS/preview" title="Screen recording: add and call a skill in ChatGPT" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-      <ol class="steps">
-        <li><b>Download</b> the skill ZIP. Keep it zipped.</li>
-        <li><b>Add it to ChatGPT:</b> click <b>Plugins</b>, toggle from <b>Plugins</b> to <b>Skills</b>, click the <b>+</b> icon, then drop the ZIP file into the upload box.</li>
-        <li><b>Start</b> with your goal in plain language, e.g. “Help me brief this case.”</li>
-      </ol>
+  <!-- Three destinations, in the order a newcomer needs them: decide, choose a
+       skill, install it. The two embedded sites follow as their own sections
+       because they are places to read rather than steps to take. -->
+  <section aria-labelledby="start-heading">
+    <p class="eyebrow">Start here</p>
+    <h2 id="start-heading">Three places to work from</h2>
+    <div class="homeDestinations">
+      <a class="card interactive homeDestination" href="pause-rule.html">
+        <div class="homeCardHead">
+          <h3>The PAUSE Rule</h3>
+          <span class="pill"><span class="dot" aria-hidden="true"></span>Five gates</span>
+        </div>
+        <p class="muted">
+          A workflow for deciding whether to use AI at all: pinpoint the task, test the fit, check that
+          the use is ethical and lawful, confirm you can judge the output, and weigh whether it actually helps.
+        </p>
+        <span class="explore">Work through the five gates &rarr;</span>
+      </a>
+      <a class="card interactive homeDestination" href="skills.html">
+        <div class="homeCardHead">
+          <h3>AI Skills</h3>
+          <span class="pill"><span class="dot" aria-hidden="true"></span>11 skills</span>
+        </div>
+        <p class="muted">
+          Downloadable assistants for ChatGPT and Claude, built for law study: a core pathway of five,
+          then guided studios for the AI tools available through the Law Library.
+        </p>
+        <span class="explore">Browse the skills &rarr;</span>
+      </a>
+      <a class="card interactive homeDestination" href="install.html">
+        <div class="homeCardHead">
+          <h3>Install a skill</h3>
+          <span class="pill"><span class="dot" aria-hidden="true"></span>Two minutes</span>
+        </div>
+        <p class="muted">
+          What a skill file is, and the exact clicks to add one in ChatGPT or Claude &mdash; with a screen
+          recording of each. You add the ZIP once and it stays available across chats.
+        </p>
+        <span class="explore">See the install steps &rarr;</span>
+      </a>
     </div>
-    <div class="panel reveal">
-      <p class="plat-tag">For Claude</p>
-      <h3>Install in Claude</h3>
-      <div class="vid"><iframe src="https://drive.google.com/file/d/1bLTqOLtblNt-oZgqGs3FtGGk85tBDKMN/preview" title="Screen recording: adding a skill in Claude" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-      <ol class="steps">
-        <li><b>Download</b> the skill ZIP. Do not unzip it.</li>
-        <li><b>Add it to Claude:</b> click <b>Customize</b>, then <b>Add</b> in the top right, and drag and drop the ZIP file into the upload box.</li>
-        <li><b>Use natural language</b> — start with your goal and ask Claude to use the skill.</li>
-      </ol>
+  </section>
+
+  <!-- The digest, shown whole on its own page rather than linked out. Same card
+       the faculty homepage uses for it. -->
+  <a class="card interactive digestCard" href="ai-upload.html">
+    <p class="eyebrow">This week in AI</p>
+    <div class="homeCardHead">
+      <h3>The AI Upload</h3>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>New every Friday</span>
     </div>
-  </div>
-  <p class="help">Access to RCLL-provided tools is limited to current SLS community members and uses Stanford SSO. Confirm your course’s AI policy with the instructor. For access, tools, or research help, contact <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>.</p>
-</section>
+    <p class="muted">
+      The Law Library&rsquo;s weekly digest of AI news &mdash; the tools, court and policy developments, and
+      practical guidance worth your attention, gathered into one short read.
+    </p>
+    <span class="explore">Read this week&rsquo;s digest &rarr;</span>
+  </a>
+
+  <!-- The faculty site is gated, so this points at it rather than pretending it is
+       open. The mirror image of the cross-promotion on the faculty homepage. -->
+  <section class="card crossPromo">
+    <div class="crossPromoText">
+      <p class="eyebrow">If you teach here</p>
+      <h2>Faculty AI and technology support</h2>
+      <p class="muted">
+        The Law Library keeps a separate site for faculty: teaching and research skills, five-minute
+        lessons on the AI decisions that come up in a course, tutorials, and the agent builder. It sits
+        behind Stanford sign-in because it is written for faculty use.
+      </p>
+    </div>
+    <div class="crossPromoActions">
+      <div class="actions" style="margin-top: 0;">
+        <a class="primary" href="faculty.html">Open the faculty site</a>
+      </div>
+      <p class="crossPromoAside muted">
+        Faculty sign-in required &mdash; students and staff should start with the PAUSE Rule and the skills above.
+      </p>
+    </div>
+  </section>
+
+  <section class="setUpRow" aria-labelledby="set-up-heading">
+    <p class="eyebrow">New here?</p>
+    <h2 id="set-up-heading" style="font-size: 1.3rem;">Two minutes to your first skill</h2>
+    <ul class="setUpLinks">
+      <li><a class="textLink" href="install.html#what-is-a-skill">What is a skill file?</a></li>
+      <li><a class="textLink" href="install.html#chatgpt">Install in ChatGPT</a></li>
+      <li><a class="textLink" href="install.html#claude">Install in Claude</a></li>
+      <li><a class="textLink" href="pause-rule.html#guidelines">Guidelines and policies</a></li>
+    </ul>
+  </section>
+
+  <p class="note">
+    <strong>Check your course policy first.</strong> Whether AI is permitted for a particular assignment is
+    set by your instructor, and the Honor Code applies either way. Access to Law Library&ndash;provided AI tools
+    is limited to current SLS community members and uses Stanford sign-in.
+  </p>
+
 </main>
-<footer class="site-footer"><div class="footer-in"><p><strong>AI Learning Hub</strong></p><p>Stanford Law School · Robert Crown Law Library</p><p>For AI tools, access, legal research, or technical assistance, contact <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>.</p></div></footer>
-<button class="toggle" id="themeBtn" type="button"><span id="themeIcon" aria-hidden="true"></span><span class="sr-only" id="themeLbl"></span></button>
 
-<script>
-const SKILLS = [
-  { n:"01", cat:"core", name:"SLS AI Orientation", zip:"skills/sls-ai-orientation/sls-ai-orientation/skill.zip", file:"sls-ai-orientation.zip",
-    desc:"Start here: how AI actually works, the SLS student AI policy, the PAUSE Rule, and your first learning-and-disclosure record." },
-  { n:"02", cat:"core", name:"SLS AI Task-Fit Coach", zip:"skills/sls-ai-orientation/sls-ai-task-fit-coach/skill.zip", file:"sls-ai-task-fit-coach.zip",
-    desc:"Decide whether AI is permitted, appropriate, and the right fit for a task — and get an AI Learning Plan with a clear go / no-go." },
-  { n:"03", cat:"core", name:"SLS Case Learning Coach", zip:"skills/sls-ai-orientation/sls-case-learning-coach/skill.zip", file:"sls-case-learning-coach.zip",
-    desc:"A Socratic partner for reading and briefing opinions. You attempt first; it questions, points to the text, and never writes your brief." },
-  { n:"04", cat:"core", name:"SLS Legal Research Learning Coach", zip:"skills/sls-ai-orientation/sls-legal-research-learning-coach/skill.zip", file:"sls-legal-research-learning-coach.zip",
-    desc:"A traditional-research-first workflow: validate authorities in authoritative sources, then use permitted AI to compare and stress-test." },
-  { n:"05", cat:"core", name:"SLS AI Verification Lab", zip:"skills/sls-ai-orientation/sls-ai-verification-lab/skill.zip", file:"sls-ai-verification-lab.zip",
-    desc:"Audit AI output claim by claim — checking whether authorities exist, are current, and actually support the point." },
-  { n:"06", cat:"studio", name:"SLS Harvey Learning Studio", zip:"skills/sls-ai-orientation/sls-harvey-learning-studio/skill.zip", file:"sls-harvey-learning-studio.zip",
-    desc:"A problem-first, SLS-specific introduction to Harvey AI, with bounded practice and source verification." },
-  { n:"07", cat:"studio", name:"SLS Legora Learning Studio", zip:"skills/sls-ai-orientation/sls-legora-learning-studio/skill.zip", file:"sls-legora-learning-studio.zip",
-    desc:"Map your workflow, see where Legora helps, and practice on safe documents while verifying every source." },
-  { n:"08", cat:"studio", name:"SLS LexText Learning Studio", zip:"skills/sls-ai-orientation/sls-lextext-learning-studio/skill.zip", file:"sls-lextext-learning-studio.zip",
-    desc:"Decide whether LexText fits a task, then learn a current feature through focused, safe practice." },
-  { n:"09", cat:"studio", name:"SLS CICERO Oral Argument Studio", zip:"skills/sls-ai-orientation/sls-cicero-oral-argument-studio/skill.zip", file:"sls-cicero-oral-argument-studio.zip",
-    desc:"Prep an argument map and goals, run the simulation in CICERO, and debrief into a focused improvement plan." },
-  { n:"10", cat:"studio", name:"SLS Gemini Notebook Learning Studio", zip:"skills/sls-ai-orientation/sls-notebooklm-learning-studio/skill.zip", file:"sls-gemini-notebook-learning-studio.zip",
-    desc:"Source-grounded study with a curated set of readings — inspect every cited passage instead of trusting it. Formerly NotebookLM." },
-  { n:"11", cat:"studio", name:"SLS AI Tool Explorer", zip:"skills/sls-ai-orientation/sls-ai-tool-explorer/skill.zip", file:"sls-ai-tool-explorer.zip",
-    desc:"Bring any AI tool or feature and get a current, guided tutorial that starts from your problem." }
-];
-const dlIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>';
-function card(s){
-  const badge = s.cat==="core" ? '<span class="badge core">Core</span>' : '<span class="badge studio">Studio</span>';
-  return `<article class="card reveal">
-    <div class="card-top"><span class="num">${s.n}</span>${badge}</div>
-    <h3>${s.name}</h3>
-    <p class="desc">${s.desc}</p>
-    <div class="divider"></div>
-    <div class="card-foot">
-      <a class="dl" href="${s.zip}" download="${s.file}" aria-label="Download the ${s.name} skill, ZIP file">${dlIcon} Download</a>
-      <span class="plat">ChatGPT · Claude</span>
-    </div>
-  </article>`;
-}
-document.getElementById("coreGrid").innerHTML = SKILLS.filter(s=>s.cat==="core").map(card).join("");
-document.getElementById("studioGrid").innerHTML = SKILLS.filter(s=>s.cat==="studio").map(card).join("");
+<footer class="footer">
+  <div class="footer-inner">
+    <nav class="footerNav" aria-label="Site footer">
+      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-start">Start here</h2>
+        <ul aria-labelledby="footer-start">
+          <li><a href="pause-rule.html">The PAUSE Rule</a><span class="footerNote">Decide whether to use AI at all</span></li>
+          <li><a href="skills.html">AI Skills</a><span class="footerNote">Downloads for ChatGPT and Claude</span></li>
+          <li><a href="install.html">Install a skill</a></li>
+        </ul>
+      </div>
+      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-read">Read</h2>
+        <ul aria-labelledby="footer-read">
+          <li><a href="ai-upload.html">The AI Upload</a><span class="footerNote">Weekly AI news digest</span></li>
+          <li><a href="faculty.html">Faculty AI site</a><span class="footerNote">Sign-in required</span></li>
+        </ul>
+      </div>
+      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-elsewhere">Elsewhere at Stanford</h2>
+        <ul aria-labelledby="footer-elsewhere">
+          <li><a href="https://law.stanford.edu/ai-initiative/" target="_blank" rel="noopener noreferrer">SLS AI Initiative<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+          <li><a href="https://law.stanford.edu/robert-crown-law-library/" target="_blank" rel="noopener noreferrer">Robert Crown Law Library<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+          <li><a href="https://uit.stanford.edu/security/responsibleai" target="_blank" rel="noopener noreferrer">Responsible AI at Stanford<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="footerHelp">
+      For AI tools, access, legal research, or technical assistance, email
+      <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>
+    </p>
+  </div>
+</footer>
 
-const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>';
-const moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z"/></svg>';
-const root=document.documentElement, iconEl=document.getElementById("themeIcon"), lblEl=document.getElementById("themeLbl"), btn=document.getElementById("themeBtn");
-function applyTheme(t){
-  root.setAttribute("data-theme",t);
-  iconEl.innerHTML=t==="dark"?sun:moon;
-  const label=t==="dark"?"Switch to light theme":"Switch to dark theme";
-  lblEl.textContent=label;
-  btn.setAttribute("aria-label",label);
-  btn.setAttribute("title",label);
-  try{localStorage.setItem("theme",t);}catch(e){}
-}
-let saved=null; try{saved=localStorage.getItem("theme");}catch(e){}
-if(saved!=="light") saved="dark";
-applyTheme(saved);
-btn.addEventListener("click",()=>applyTheme(root.getAttribute("data-theme")==="dark"?"light":"dark"));
-
-const menuBtn=document.getElementById("menuBtn"), primaryNav=document.getElementById("primaryNav");
-function setMenu(open,restoreFocus=false){
-  menuBtn.setAttribute("aria-expanded",String(open));
-  menuBtn.setAttribute("aria-label",open?"Close navigation menu":"Open navigation menu");
-  primaryNav.classList.toggle("open",open);
-  if(restoreFocus) menuBtn.focus();
-}
-menuBtn.addEventListener("click",()=>setMenu(menuBtn.getAttribute("aria-expanded")!=="true"));
-primaryNav.addEventListener("click",event=>{if(event.target.closest("a")) setMenu(false)});
-document.addEventListener("keydown",event=>{if(event.key==="Escape"&&menuBtn.getAttribute("aria-expanded")==="true") setMenu(false,true)});
-window.addEventListener("hashchange",()=>setMenu(false));
-window.matchMedia("(min-width: 861px)").addEventListener("change",event=>{if(event.matches)setMenu(false)});
-
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-</script>
+<script src="assets/hub.js"></script>
 </body>
 </html>
