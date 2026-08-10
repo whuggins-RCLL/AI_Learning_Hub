@@ -77,11 +77,24 @@ sign in to. The header is destinations only.
 ### The embedded sites
 
 `faculty.html` and `ai-upload.html` frame
-`sls-faculty-ai-skills.vercel.app` and `ai-upload-stanford-law.vercel.app`. Both
-carry a permanent "open in a new tab" link above the frame. For the faculty site
-that link is the reliable route rather than a fallback: it is behind Stanford
-sign-in, and a sign-in inside a frame — nested again inside a Google Site — is the
-case browsers restrict.
+`sls-faculty-ai-skills.vercel.app` and `ai-upload-stanford-law.vercel.app`.
+
+Each is the frame and nothing else: no header, no footer, no explanatory strip, no
+theme toggle. Both framed sites carry their own navigation and their own branding,
+so a bar of ours above one would put two sets of destinations on the same screen.
+`scripts/nav.py` skips these two, and fails loudly if either ever grows a
+`.siteHeader` block.
+
+Because there is no chrome to measure around, the frame is simply the viewport —
+`position: fixed; inset: 0`. Note that the design system copied from the faculty
+site contains a `.digestEmbed` rule that assumes 68px of chrome above the frame;
+nothing here uses it, and 68px is not what that bar actually measures.
+
+The faculty site is behind Stanford sign-in. A reader who is not signed in sees
+that site's own sign-in page inside the frame, which is its answer to give rather
+than this site's. Worth knowing: a sign-in inside a frame — nested again inside a
+Google Site — is the case browsers restrict, so signing in may have to happen in
+the faculty site's own tab.
 
 ## The skills
 

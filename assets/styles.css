@@ -2693,45 +2693,22 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .installVideo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* ---- Full-page embeds ----------------------------------------------------
-   The faculty site and The AI Upload are shown whole rather than described.
-   Each gets the header, a strip explaining what is in the frame, and then the
-   frame filling everything left — because an embedded site gives the reader no
-   way back and no way out to a real tab.
+   The faculty site and The AI Upload are shown whole, and nothing of this site
+   is shown around them: no header, no strip, no theme toggle. Both framed sites
+   have their own navigation and their own branding, so hub chrome above one
+   would put two sets of destinations on the same screen, and a floating theme
+   button would only be dressing chrome that is no longer there.
 
-   The strip is not decoration. The faculty site is behind a sign-in, and a
-   sign-in inside a frame inside a Google Site is exactly the case browsers
-   block, so "open in a new tab" has to be permanently visible rather than
-   offered after something fails.
+   That leaves nothing to measure around, so the frame is simply the viewport —
+   no flex column, no offset. (The faculty site's own .digestEmbed, further up
+   this sheet, still assumes 68px of chrome above it; nothing here uses it.)
 
-   These pages lay out as a flex column and the header joins the flow, rather
-   than the fixed header and a hardcoded offset the rest of the site uses.
-   .digestEmbed does it the other way, with `top: 68px`, and 68px is not what the
-   bar measures: the logo alone is 20rem wide at a 551:139 ratio, so the header
-   is nearer 103px on a desktop and taller again once it wraps at 860px. An
-   offset that has to be right at every width should not be a number at all. */
-body.hasEmbed {
-  display: flex; flex-direction: column;
-  height: 100dvh; overflow: hidden;
-}
-body.hasEmbed .siteHeader { position: static; flex: 0 0 auto; }
-.embedBar {
-  flex: 0 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 0.8rem; flex-wrap: wrap;
-  padding: 0.55rem clamp(1rem, 4vw, 3rem);
-  background: var(--glass-bg-strong);
-  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid var(--glass-hairline);
-  font-size: 0.88rem;
-}
-.embedBar p { margin: 0; color: var(--muted); max-width: 70ch; }
-.embedBar .secondary { min-height: 38px; padding: 0.4rem 0.9rem; font-size: 0.86rem; }
-/* Whatever the two rows above did not take. min-height:0 is load-bearing: without
-   it a flex item refuses to shrink below its content and the frame pushes the
-   page taller than the viewport. */
+   overflow:hidden on the body: the frame is already exactly the viewport, so any
+   scrolling belongs to the framed document, not to this page around it. */
+body.hasEmbed { overflow: hidden; }
 .embedFrame {
-  flex: 1 1 auto; min-height: 0;
-  display: block; width: 100%;
+  position: fixed; inset: 0;
+  display: block; width: 100vw; height: 100dvh;
   border: 0; background: #fff;
 }
 

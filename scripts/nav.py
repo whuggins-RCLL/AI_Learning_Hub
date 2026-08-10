@@ -130,12 +130,26 @@ def footer_html():
 HEADER_RE = re.compile(r'<header class="siteHeader">.*?</header>', re.S)
 FOOTER_RE = re.compile(r'<footer class="footer">.*?</footer>', re.S)
 
+# The two pages that are a full-viewport frame and nothing else. Both framed
+# sites carry their own navigation, so putting this site's bar above one would
+# show a reader two sets of destinations at once. They get no header and no
+# footer, and this script leaves them alone.
+EMBED_PAGES = {"faculty.html", "ai-upload.html"}
+
 
 def main():
     pages = sorted(ROOT.glob("*.html"))
     if not pages:
         sys.exit("no pages found")
     for page in pages:
+        if page.name in EMBED_PAGES:
+            # Not merely skipped: if one of these ever grows a bar, that is a
+            # mistake this script should report rather than quietly maintain.
+            if HEADER_RE.search(page.read_text()):
+                sys.exit(f"{page.name} is a full-page embed but carries a .siteHeader block")
+            print(f"skipped {page.name} (full-page embed)")
+            continue
+
         text = page.read_text()
         original = text
 
@@ -143,11 +157,9 @@ def main():
             sys.exit(f"{page.name}: no .siteHeader block to replace")
         text = HEADER_RE.sub(lambda _: header_html(page.name), text, count=1)
 
-        # The two embed pages fill the viewport with a frame and carry no footer;
-        # a footer below an iframe that is already the full height would only be
-        # reachable by scrolling a page that does not scroll.
-        if FOOTER_RE.search(text):
-            text = FOOTER_RE.sub(lambda _: footer_html(), text, count=1)
+        if not FOOTER_RE.search(text):
+            sys.exit(f"{page.name}: no .footer block to replace")
+        text = FOOTER_RE.sub(lambda _: footer_html(), text, count=1)
 
         if text != original:
             page.write_text(text)
