@@ -52,13 +52,11 @@ it places a Home button and a site-scoped search at the top right. The six prima
 destinations are The AI Upload, Tutorials, Resources, Events, Skills, and Faulty
 Support.
 
-Everything else — the PAUSE Rule, Your AI Stack, AI in the Library, install, past
-events, AI Essentials, Slack, and outbound Stanford links — is reachable from the
-footer. The footer does not repeat the bar destinations.
+The footer is reserved for outbound Stanford links and does not repeat the site
+navigation. Secondary pages are linked from relevant landing-page content.
 
-The PAUSE Rule is not in the bar. It is a short link on the home hero and a
-footer entry, not a primary call to action or a destination card that restates
-the nav.
+The PAUSE Rule is not in the bar. It is a short link on the home hero rather than
+a primary call to action or a destination card that restates the nav.
 
 The bar and footer are the same markup on every page that has them, which no one
 should be retyping eleven times. They are written by `scripts/nav.py`: it replaces

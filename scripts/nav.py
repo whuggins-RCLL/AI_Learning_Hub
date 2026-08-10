@@ -36,32 +36,10 @@ def ext_link(href, label, note=None):
     )
 
 
-def link(href, label, note=None):
-    note_html = f'<span class="footerNote">{note}</span>' if note else ""
-    return f'<li><a href="{href}">{label}</a>{note_html}</li>'
-
-
-# Footer lists what the bar does not: secondary hub pages and outbound Stanford
-# links. Destinations already in the header are omitted so the page is not the
-# same menu three times.
+# The footer keeps only the outbound Stanford links. Hub destinations are already
+# available through the header and landing page, so another site menu here would
+# repeat those routes.
 FOOTER_GROUPS = [
-    (
-        "more",
-        "More on this site",
-        [
-            ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes"),
-            link("pause-rule.html", "The PAUSE Rule"),
-            # The tool directory is a destination in its own right, but the header
-            # row is capped at six, so it is reachable from the home page card and
-            # from here on every other page.
-            link("your-ai-stack.html", "Your AI Stack", "113 tools"),
-            link("ai-in-the-library.html", "AI in the Library"),
-            link("reading-list.html", "AI reading list"),
-            link("past-events.html", "Past events"),
-            link("install.html", "Install a skill"),
-            ext_link("https://stanford.enterprise.slack.com/", "SLS Tech Chat on Slack", "#techchat"),
-        ],
-    ),
     (
         "elsewhere",
         "Elsewhere at Stanford",
@@ -126,10 +104,6 @@ def footer_html():
     <nav class="footerNav" aria-label="Site footer">
 {joined}
     </nav>
-    <p class="footerHelp">
-      For AI tools, access, legal research, or technical assistance, email
-      <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>
-    </p>
   </div>
 </footer>"""
 
