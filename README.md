@@ -27,6 +27,8 @@ python3 -m http.server 8000
 | `tutorials.html` | The tutorial library: eight topics, ~34 guides and DIY modules |
 | `ai-resources.html` | AI tools available to the SLS community, and the policy that governs them |
 | `ai-in-the-library.html` | The library's AI display: 7 parts, 24 panels, 32 books |
+| `reading-list.html` | The 32-book shelf on its own page (same data as the display) |
+| `assets/books.js` | Shared reading-list data and card renderer |
 | `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
 | `skills.html` | The eleven downloadable AI skills |
@@ -69,8 +71,12 @@ python3 scripts/nav.py
 Two pages keep their content in one array at the bottom of the file and render the
 cards from it, because both are lists that grow and an entry beats a block of copied
 HTML: `tutorials.html` (~34 tutorials) and `ai-in-the-library.html` (7 categories, 24
-panels, 32 books). The previous hub's tutorials page worked the same way. Everything
-else is written out as HTML.
+panels). The previous hub's tutorials page worked the same way. Everything else is
+written out as HTML.
+
+The thirty-two books are different: they live once in `assets/books.js` and are
+rendered by both `reading-list.html` and the Selected Reading section of
+`ai-in-the-library.html`. Edit the array in that file to update both pages.
 
 ### AI in the Library
 
