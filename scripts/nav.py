@@ -15,19 +15,16 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 # The header bar, capped at six destinations. The faculty site measured six as the
 # point where a seventh link wraps the bar onto a second row at laptop widths, and
-# this bar carries the same logo and type at the same sizes. Everything else is
-# reachable from the footer.
+# this bar carries the same logo and type at the same sizes. The logo is the home
+# link, so Home is not repeated here. Faculty support sits in the bar; the PAUSE
+# Rule and other secondary routes stay in the footer.
 NAV = [
-    ("index.html", "Home"),
-    # The AI Upload took the PAUSE Rule's slot here. The Rule is read once and
-    # referred back to; the digest is a new reason to return every Friday, which is
-    # what a bar slot is worth. The Rule keeps the footer's first entry, the home
-    # hero's primary action, and its own destination card.
     ("ai-upload.html", "The AI Upload"),
     ("tutorials.html", "Tutorials"),
     ("ai-resources.html", "Resources"),
     ("events.html", "Events"),
     ("skills.html", "Skills"),
+    ("faculty.html", "Faculty"),
 ]
 
 EXT = '<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span>'
@@ -46,27 +43,19 @@ def link(href, label, note=None):
     return f'<li><a href="{href}">{label}</a>{note_html}</li>'
 
 
+# Footer lists what the bar does not: secondary hub pages and outbound Stanford
+# links. Destinations already in the header are omitted so the page is not the
+# same menu three times.
 FOOTER_GROUPS = [
     (
-        "start",
-        "Start here",
+        "more",
+        "More on this site",
         [
-            ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes, start here"),
-            link("pause-rule.html", "The PAUSE Rule", "Decide whether to use AI at all"),
-            link("tutorials.html", "AI Tutorials"),
-            link("skills.html", "AI Skills", "Downloads for ChatGPT and Claude"),
+            ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes"),
+            link("pause-rule.html", "The PAUSE Rule"),
+            link("ai-in-the-library.html", "AI in the Library"),
+            link("past-events.html", "Past events"),
             link("install.html", "Install a skill"),
-        ],
-    ),
-    (
-        "community",
-        "Community and reading",
-        [
-            link("events.html", "Events and Curiosity Corners"),
-            link("past-events.html", "Past events", "Materials and recordings"),
-            link("ai-in-the-library.html", "AI in the Library", "The library&rsquo;s AI display"),
-            # The AI Upload is not repeated here: it is in the bar now.
-            link("faculty.html", "Faculty AI site", "Sign-in required"),
             ext_link("https://stanford.enterprise.slack.com/", "SLS Tech Chat on Slack", "#techchat"),
         ],
     ),
@@ -81,9 +70,6 @@ FOOTER_GROUPS = [
                 "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
                 "Use of Generative AI at SLS",
             ),
-            # The AI in the Library display used to be listed here as an outbound
-            # link to its own deployment. It is a page on this site now, so it
-            # moved to "Community and reading" — it is no longer elsewhere.
         ],
     ),
 ]
