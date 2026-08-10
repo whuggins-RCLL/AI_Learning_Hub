@@ -37,6 +37,9 @@ python3 -m http.server 8000
 | `faculty-publications.html` | SLS faculty publications on AI, embedded within the hub navigation |
 | `ai-upload.html` | Full-page embed of The AI Upload, the weekly AI news digest |
 | `assets/styles.css` | The design system |
+| `your-ai-stack.html` | Your AI Stack — the searchable directory of 113 AI tools |
+| `assets/ai-stack-data.js` | The tool catalogue and the retired-product list (generated) |
+| `assets/ai-stack.js` | Browsing, filtering, comparing, and saving for Your AI Stack |
 | `assets/hub.js` | The theme toggle and the collapsing navigation |
 
 All of it is ported from the previous AI Learning Hub, which was a set of
@@ -49,9 +52,9 @@ it places a Home button and a site-scoped search at the top right. The six prima
 destinations are The AI Upload, Tutorials, Resources, Events, Skills, and Faulty
 Support.
 
-Everything else — the PAUSE Rule, AI in the Library, install, past events, AI
-Essentials, Slack, and outbound Stanford links — is reachable from the footer.
-The footer does not repeat the bar destinations.
+Everything else — the PAUSE Rule, Your AI Stack, AI in the Library, install, past
+events, AI Essentials, Slack, and outbound Stanford links — is reachable from the
+footer. The footer does not repeat the bar destinations.
 
 The PAUSE Rule is not in the bar. It is a short link on the home hero and a
 footer entry, not a primary call to action or a destination card that restates
@@ -78,6 +81,45 @@ written out as HTML.
 The thirty-two books are different: they live once in `assets/books.js` and are
 rendered by both `reading-list.html` and the Selected Reading section of
 `ai-in-the-library.html`. Edit the array in that file to update both pages.
+
+### Your AI Stack
+
+`your-ai-stack.html` was its own repository — `whuggins-RCLL/Your-AI-Stack`, a Vite +
+React + Tailwind app. The hub link used to point at a Google Sites page wrapping it.
+The directory now runs natively here: 113 tools, 29 retired products, the same
+categories, and the guide sections, in the hub's design system with no build step.
+
+The catalogue is generated rather than retyped. `scripts/port-ai-stack.mjs` reads
+`src/data.ts` and `src/data/discontinuedAi.ts` out of the Your-AI-Stack checkout and
+writes `assets/ai-stack-data.js`. Edit the entries there and re-run it; do not
+hand-edit the generated file, or the two copies will drift.
+
+```
+node scripts/port-ai-stack.mjs
+```
+
+Everything else lives in `assets/ai-stack.js`, which is plain ES5-flavoured
+JavaScript like `hub.js`. Two things differ from the app it replaces, and both are
+navigation fixes rather than ports:
+
+- **Every view is in the URL.** A search, a category, the saved list, an open tool,
+  and a comparison are all encoded in `location.hash` — `#tool=notebooklm`,
+  `#cat=Legal+Research+%26+Analysis`, `#cmp=claude,gemini&open=compare`. Any of them
+  can be linked to or bookmarked, and Back closes an overlay rather than leaving the
+  site. In the app all of this was component state.
+- **Saves persist.** The saved list is in `localStorage`, so following a link out to a
+  vendor and coming back does not empty it. The app kept saves in memory only.
+
+Three of the app's features did **not** come across:
+
+- **The blocking disclaimer modal.** The same text is now a note at the top of the
+  page. A modal that has to be dismissed on every visit before anything can be read
+  is a toll, not a disclosure, and it was the first thing every reader saw.
+- **The html2pdf export**, which pulled in a 985 kB dependency. The saved list prints
+  through a print stylesheet — every browser's print dialog saves to PDF — and there
+  is a dependency-free Markdown download beside it.
+- **Tool logos**, which were `picsum.photos` placeholder images keyed by tool name,
+  so they were decorative noise fetched from a third party on every card.
 
 ### AI in the Library
 
