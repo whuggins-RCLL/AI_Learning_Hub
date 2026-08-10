@@ -1872,10 +1872,8 @@ img.mediaAsset {
 .footer-inner p { margin: 0; }
 .footer a { color: var(--ink); }
 
-/* The footer now carries what the header bar gave up: the outbound links and the
-   nine routes that were reachable from no menu at all. Grouped with a heading
-   each, so a screen-reader user can skip to the group rather than hearing eleven
-   undifferentiated links. */
+/* The footer lists secondary hub pages and outbound Stanford links — not the
+   six bar destinations. Grouped with a heading each for screen-reader skip. */
 .footerNav {
   display: grid; gap: 1.4rem clamp(1.2rem, 4vw, 3rem);
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
@@ -2534,6 +2532,11 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
    neither, the nav would sit hard against the viewport edge, so it is pushed off
    the edge by the same amount the account pill used to occupy. */
 .siteHeader nav.primaryNav { margin-left: auto; }
+
+/* Home hero without the PAUSE side card: one column, brand and actions only. */
+.hero.solo { grid-template-columns: 1fr; max-width: 48rem; }
+.heroAside { margin: 1rem 0 0; font-size: 0.95rem; }
+.heroAside a { font-weight: 600; }
 
 /* ---- Verdicts: Proceed / ABORT / Use an alternative ------------------------
    The PAUSE Rule ends each gate in one of three outcomes. They are pills rather

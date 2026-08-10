@@ -43,13 +43,16 @@ standalone Tailwind and React pages, into the one design system below.
 
 The header bar holds six destinations and no more. That is the width at which a
 seventh wraps the bar onto a second row, measured on the faculty site with the same
-logo and type. Everything else — the PAUSE Rule, AI in the Library, install, past
-events, the faculty embed, the outbound links — is reachable from the footer.
+logo and type. The logo is the home link, so Home is not repeated in the bar. The
+six are The AI Upload, Tutorials, Resources, Events, Skills, and Faculty.
 
-The PAUSE Rule is not in the bar. It is read once and referred back to, where The
-AI Upload is a new reason to return every Friday, and a bar slot is worth more to
-the second than the first. The Rule keeps the footer's first entry, the home hero's
-primary action, and its own destination card.
+Everything else — the PAUSE Rule, AI in the Library, install, past events, AI
+Essentials, Slack, and outbound Stanford links — is reachable from the footer.
+The footer does not repeat the bar destinations.
+
+The PAUSE Rule is not in the bar. It is a short link on the home hero and a
+footer entry, not a primary call to action or a destination card that restates
+the nav.
 
 The bar and footer are the same markup on every page that has them, which no one
 should be retyping eleven times. They are written by `scripts/nav.py`: it replaces

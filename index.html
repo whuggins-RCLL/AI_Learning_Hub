@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />
 <title>The AI Learning Hub | Stanford Law School</title>
-<meta name="description" content="The Robert Crown Law Library's AI Learning Hub for Stanford Law School — the PAUSE Rule, AI tutorials, resources, events, downloadable AI skills, and the weekly AI Upload. Open to the whole SLS community, no sign-in required." />
+<meta name="description" content="The Robert Crown Law Library's AI Learning Hub for Stanford Law School — AI tutorials, resources, events, downloadable AI skills, and the weekly AI Upload. Open to the whole SLS community, no sign-in required." />
 <link rel="stylesheet" href="assets/styles.css" />
 <!-- Applies the saved theme before first paint, so a reader who chose light
      mode does not see a dark flash. Mirrors the faculty site's layout.tsx. -->
@@ -22,51 +22,43 @@
     <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
   </button>
   <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
-    <a href="index.html" aria-current="page">Home</a>
     <a href="ai-upload.html">The AI Upload</a>
     <a href="tutorials.html">Tutorials</a>
     <a href="ai-resources.html">Resources</a>
     <a href="events.html">Events</a>
     <a href="skills.html">Skills</a>
+    <a href="faculty.html">Faculty</a>
   </nav>
 </header>
 
 <main id="main">
 
-  <section class="hero">
+  <section class="hero solo">
     <div>
       <h1>The AI Learning Hub</h1>
+      <p class="lede">
+        Tutorials, tools, events, and skills for using AI well at Stanford Law School &mdash;
+        open to students, staff, and faculty, with no sign-in required.
+      </p>
       <div class="actions">
-        <a class="primary" href="pause-rule.html">Start with the PAUSE Rule</a>
-        <a class="secondary" href="tutorials.html">Browse the tutorials</a>
+        <a class="primary" href="tutorials.html">Browse the tutorials</a>
+        <a class="secondary" href="ai-resources.html">See the resources</a>
       </div>
+      <p class="heroAside muted">
+        Before a new AI task, walk through
+        <a href="pause-rule.html">the PAUSE Rule</a>.
+      </p>
     </div>
-    <aside class="card hero-card">
-      <h3>Before you use AI</h3>
-      <p class="muted">Five gates, in order. Any one of them can end the answer at &ldquo;not this task.&rdquo;</p>
-      <ul class="gateList">
-        <li><b>P</b> Pinpoint your task</li>
-        <li><b>A</b> Assess AI&#8209;fit</li>
-        <li><b>U</b> Use ethically</li>
-        <li><b>S</b> Self&#8209;assess your skills</li>
-        <li><b>E</b> Enhance your workflow</li>
-      </ul>
-      <a class="explore" href="pause-rule.html">Read the full workflow &rarr;</a>
-    </aside>
   </section>
 
-  <!-- Two ways to reach a person. They sit this high because the old hub put them
-       here: most questions are answered faster by asking than by browsing. -->
   <section class="grid two" aria-label="Get help">
     <div class="card">
-      <p class="eyebrow">Get help with anything</p>
-      <h3>There is one email to know</h3>
+      <h3>Email the library</h3>
       <p style="margin-bottom: 0;">
         <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>
       </p>
     </div>
     <div class="card">
-      <p class="eyebrow">Join the conversation</p>
       <h3>SLS Tech Chat on Slack</h3>
       <p style="margin-bottom: 0;">
         <a href="https://stanford.enterprise.slack.com/" target="_blank" rel="noopener noreferrer">#techchat<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a>
@@ -75,7 +67,6 @@
     </div>
   </section>
 
-  <!-- The two items the old hub promoted above everything else. -->
   <section class="grid two" aria-label="Featured">
     <a class="card interactive" href="https://bit.ly/rcll-aiessentials" target="_blank" rel="noopener noreferrer">
       <div class="homeCardHead">
@@ -83,8 +74,8 @@
         <span class="pill"><span class="dot" aria-hidden="true"></span>10&ndash;15 minutes</span>
       </div>
       <p class="muted">
-        The essential introduction to effective and responsible AI use, data privacy, and knowing when to use
-        AI at all. Start here, and complete it before requesting access to the Law Library&rsquo;s legal AI tools.
+        Effective and responsible AI use, data privacy, and knowing when to use AI at all.
+        Complete it before requesting access to the Law Library&rsquo;s legal AI tools.
       </p>
       <span class="explore">Begin the training &rarr;<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></span>
     </a>
@@ -94,131 +85,14 @@
         <span class="pill"><span class="dot" aria-hidden="true"></span>32 books &middot; 7 parts</span>
       </div>
       <p class="muted">
-        The companion to the physical AI display on the first floor of the library: the rules worth adopting,
-        keeping human judgment in the loop, vetting AI legal research, and a curated shelf.
+        Companion to the physical AI display on the first floor: judgment in the loop,
+        vetting AI legal research, and a curated shelf.
       </p>
       <span class="explore">Open the display &rarr;</span>
     </a>
   </section>
 
-  <!-- One card per destination on this site. Anything that leaves the hub is a
-       featured item above or a footer link below, so this list stays answerable:
-       these are the places to work from. -->
-  <section aria-labelledby="start-heading">
-    <p class="eyebrow">Explore more</p>
-    <h2 id="start-heading">Six places to work from</h2>
-    <div class="homeDestinations">
-      <a class="card interactive homeDestination" href="pause-rule.html">
-        <div class="homeCardHead">
-          <h3>The PAUSE Rule</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>Five gates</span>
-        </div>
-        <p class="muted">
-          A workflow for deciding whether to use AI at all: pinpoint the task, test the fit, check that the use
-          is ethical and lawful, confirm you can judge the output, and weigh whether it actually helps.
-        </p>
-        <span class="explore">Work through the five gates &rarr;</span>
-      </a>
-      <a class="card interactive homeDestination" href="tutorials.html">
-        <div class="homeCardHead">
-          <h3>AI Tutorials</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>Eight topics</span>
-        </div>
-        <p class="muted">
-          Self-paced learning modules, resource guides, and hands-on tutorials &mdash; from writing and
-          curriculum design to datasets, legal research, and vibe coding.
-        </p>
-        <span class="explore">Browse the tutorials &rarr;</span>
-      </a>
-      <a class="card interactive homeDestination" href="ai-resources.html">
-        <div class="homeCardHead">
-          <h3>AI Resources</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>Tools and policy</span>
-        </div>
-        <p class="muted">
-          The AI tools available to the SLS community and the guidance that governs them: legal databases,
-          library-provided legal AI, and Stanford&rsquo;s own tools.
-        </p>
-        <span class="explore">See the resources &rarr;</span>
-      </a>
-      <a class="card interactive homeDestination" href="events.html">
-        <div class="homeCardHead">
-          <h3>Events and Curiosity Corners</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>Weekly drop-in</span>
-        </div>
-        <p class="muted">
-          Hands-on trainings, drop-in office hours for one-to-one help, the SLS Tech Club, and the full event
-          calendar.
-        </p>
-        <span class="explore">See what is on &rarr;</span>
-      </a>
-      <a class="card interactive homeDestination" href="skills.html">
-        <div class="homeCardHead">
-          <h3>AI Skills</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>11 skills</span>
-        </div>
-        <p class="muted">
-          Downloadable assistants for ChatGPT and Claude, built for law study: a core pathway of five, then
-          guided studios for the AI tools available through the Law Library.
-        </p>
-        <span class="explore">Browse the skills &rarr;</span>
-      </a>
-      <a class="card interactive homeDestination" href="past-events.html">
-        <div class="homeCardHead">
-          <h3>Past events</h3>
-          <span class="pill"><span class="dot" aria-hidden="true"></span>Archive</span>
-        </div>
-        <p class="muted">
-          Catch up on previous AI trainings, workshops, and Tech Club meetings, with materials and recordings
-          where they are available.
-        </p>
-        <span class="explore">Open the archive &rarr;</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- The digest, shown whole on its own page rather than linked out. Same card
-       the faculty homepage uses for it. -->
-  <a class="card interactive digestCard" href="ai-upload.html">
-    <p class="eyebrow">This week in AI</p>
-    <div class="homeCardHead">
-      <h3>The AI Upload</h3>
-      <span class="pill"><span class="dot" aria-hidden="true"></span>New every Friday</span>
-    </div>
-    <p class="muted">
-      The Law Library&rsquo;s weekly digest of AI news &mdash; the tools, court and policy developments, and
-      practical guidance worth your attention, gathered into one short read.
-    </p>
-    <span class="explore">Read this week&rsquo;s digest &rarr;</span>
-  </a>
-
-  <!-- The faculty site is gated, so this points at it rather than pretending it is
-       open. The mirror image of the cross-promotion on the faculty homepage. -->
-  <section class="card crossPromo">
-    <div class="crossPromoText">
-      <p class="eyebrow">If you teach here</p>
-      <h2>Faculty AI and technology support</h2>
-      <p class="muted">
-        The Law Library keeps a separate site for faculty: teaching and research skills, five-minute lessons on
-        the AI decisions that come up in a course, tutorials, and the agent builder. It sits behind Stanford
-        sign-in because it is written for faculty use.
-      </p>
-    </div>
-    <div class="crossPromoActions">
-      <div class="actions" style="margin-top: 0;">
-        <a class="primary" href="faculty.html">Open the faculty site</a>
-      </div>
-      <p class="crossPromoAside muted">
-        Faculty sign-in required &mdash; students and staff should start with the PAUSE Rule and the tutorials above.
-      </p>
-    </div>
-  </section>
-
-  <!-- Reading and reference that lives elsewhere. These are looked up when a
-       question arises rather than chosen as a place to start, so they sit below the
-       destinations and are plainly marked as leaving the hub. -->
   <section aria-labelledby="lookup-h">
-    <p class="eyebrow">Look something up</p>
     <h2 id="lookup-h">Reading and reference</h2>
     <div class="grid four" style="margin-top: 1.2rem;">
       <a class="card interactive compact" href="https://sites.google.com/law.stanford.edu/ailearninghub/your-ai-stack" target="_blank" rel="noopener noreferrer">
@@ -244,14 +118,8 @@
     </div>
   </section>
 
-  <!-- ===================== Guidelines and policies ===================== -->
-
   <section aria-labelledby="policy-h">
-    <p class="eyebrow">Rules and expectations</p>
     <h2 id="policy-h">Guidelines and policies</h2>
-    <p class="muted" style="max-width: 70ch;">
-      The essential rules and university policies for using generative AI responsibly.
-    </p>
     <div class="grid two" style="margin-top: 1.2rem;">
       <a class="card interactive" href="https://uit.stanford.edu/security/responsibleai" target="_blank" rel="noopener noreferrer">
         <h3>Responsible AI at Stanford</h3>
@@ -278,22 +146,13 @@
   <div class="footer-inner">
     <nav class="footerNav" aria-label="Site footer">
       <div class="footerGroup">
-        <h2 class="footerHeading" id="footer-start">Start here</h2>
-        <ul aria-labelledby="footer-start">
-          <li><a href="https://bit.ly/rcll-aiessentials" target="_blank" rel="noopener noreferrer">AI Essentials Training<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a><span class="footerNote">10&ndash;15 minutes, start here</span></li>
-          <li><a href="pause-rule.html">The PAUSE Rule</a><span class="footerNote">Decide whether to use AI at all</span></li>
-          <li><a href="tutorials.html">AI Tutorials</a></li>
-          <li><a href="skills.html">AI Skills</a><span class="footerNote">Downloads for ChatGPT and Claude</span></li>
+        <h2 class="footerHeading" id="footer-more">More on this site</h2>
+        <ul aria-labelledby="footer-more">
+          <li><a href="https://bit.ly/rcll-aiessentials" target="_blank" rel="noopener noreferrer">AI Essentials Training<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a><span class="footerNote">10&ndash;15 minutes</span></li>
+          <li><a href="pause-rule.html">The PAUSE Rule</a></li>
+          <li><a href="ai-in-the-library.html">AI in the Library</a></li>
+          <li><a href="past-events.html">Past events</a></li>
           <li><a href="install.html">Install a skill</a></li>
-        </ul>
-      </div>
-      <div class="footerGroup">
-        <h2 class="footerHeading" id="footer-community">Community and reading</h2>
-        <ul aria-labelledby="footer-community">
-          <li><a href="events.html">Events and Curiosity Corners</a></li>
-          <li><a href="past-events.html">Past events</a><span class="footerNote">Materials and recordings</span></li>
-          <li><a href="ai-in-the-library.html">AI in the Library</a><span class="footerNote">The library&rsquo;s AI display</span></li>
-          <li><a href="faculty.html">Faculty AI site</a><span class="footerNote">Sign-in required</span></li>
           <li><a href="https://stanford.enterprise.slack.com/" target="_blank" rel="noopener noreferrer">SLS Tech Chat on Slack<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a><span class="footerNote">#techchat</span></li>
         </ul>
       </div>
