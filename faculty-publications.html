@@ -5,18 +5,93 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />
 <title>SLS faculty publications on AI | AI Learning Hub | Stanford Law School</title>
-<meta name="description" content="Stanford Law School faculty publications on artificial intelligence, shown in full." />
+<meta name="description" content="Browse Stanford Law School faculty publications on artificial intelligence without leaving the AI Learning Hub." />
 <link rel="stylesheet" href="assets/styles.css" />
 <script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
 </head>
-<!-- No hub header, footer, or theme toggle: the Stanford Law School
-     publications page brings its own navigation and branding. -->
-<body class="hasEmbed">
-<iframe
-  class="embedFrame"
-  src="https://law.stanford.edu/publications/?related_organization=556083&amp;page=1"
-  title="Stanford Law School faculty publications on artificial intelligence"
-  referrerpolicy="no-referrer-when-downgrade"
-></iframe>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="siteHeader">
+  <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
+    <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
+  </a>
+  <div class="headerNavigation">
+    <div class="headerTools">
+      <a class="homeButton" href="index.html">Home</a>
+      <form class="siteSearch" action="https://www.google.com/search" method="get" role="search">
+        <label class="srOnly" for="site-search">Search the AI Learning Hub</label>
+        <input id="site-search" name="q" type="search" placeholder="Search" required />
+        <input class="siteSearchScope" name="sitesearch" type="hidden" value="" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+      <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+    <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+    <a href="ai-upload.html">The AI Upload</a>
+    <a href="tutorials.html">Tutorials</a>
+    <a href="ai-resources.html">Resources</a>
+    <a href="events.html">Events</a>
+    <a href="skills.html">Skills</a>
+    <a href="faculty.html">Faulty Support</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero solo">
+    <div>
+      <p class="eyebrow">Reading and reference</p>
+      <h1>SLS faculty publications on AI</h1>
+      <p class="lede">Browse publications on artificial intelligence authored by Stanford Law School faculty.</p>
+    </div>
+  </section>
+
+  <section aria-label="Stanford Law School faculty publications">
+    <div class="embedPanel publicationsEmbed">
+      <iframe
+        src="https://law.stanford.edu/publications/?related_organization=556083&amp;page=1"
+        title="Stanford Law School faculty publications on artificial intelligence"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <nav class="footerNav" aria-label="Site footer">
+      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-more">More on this site</h2>
+        <ul aria-labelledby="footer-more">
+          <li><a href="https://bit.ly/rcll-aiessentials" target="_blank" rel="noopener noreferrer">AI Essentials Training<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a><span class="footerNote">10&ndash;15 minutes</span></li>
+          <li><a href="pause-rule.html">The PAUSE Rule</a></li>
+          <li><a href="ai-in-the-library.html">AI in the Library</a></li>
+          <li><a href="reading-list.html">AI reading list</a></li>
+          <li><a href="past-events.html">Past events</a></li>
+          <li><a href="install.html">Install a skill</a></li>
+          <li><a href="https://stanford.enterprise.slack.com/" target="_blank" rel="noopener noreferrer">SLS Tech Chat on Slack<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a><span class="footerNote">#techchat</span></li>
+        </ul>
+      </div>
+      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-elsewhere">Elsewhere at Stanford</h2>
+        <ul aria-labelledby="footer-elsewhere">
+          <li><a href="https://law.stanford.edu/ai-initiative/" target="_blank" rel="noopener noreferrer">SLS AI Initiative<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+          <li><a href="https://law.stanford.edu/robert-crown-law-library/" target="_blank" rel="noopener noreferrer">Robert Crown Law Library<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+          <li><a href="https://uit.stanford.edu/security/responsibleai" target="_blank" rel="noopener noreferrer">Responsible AI at Stanford<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+          <li><a href="https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/" target="_blank" rel="noopener noreferrer">Use of Generative AI at SLS<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="footerHelp">
+      For AI tools, access, legal research, or technical assistance, email
+      <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>
+    </p>
+  </div>
+</footer>
+
+<script src="assets/hub.js"></script>
 </body>
 </html>

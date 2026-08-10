@@ -34,7 +34,7 @@ python3 -m http.server 8000
 | `skills.html` | The eleven downloadable AI skills |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `faculty.html` | Full-page embed of the faculty AI site |
-| `faculty-publications.html` | Full-page embed of SLS faculty publications on AI |
+| `faculty-publications.html` | SLS faculty publications on AI, embedded within the hub navigation |
 | `ai-upload.html` | Full-page embed of The AI Upload, the weekly AI news digest |
 | `assets/styles.css` | The design system |
 | `assets/hub.js` | The theme toggle and the collapsing navigation |
@@ -118,16 +118,18 @@ to sign in to.
 
 ### The embedded sites
 
-`faculty.html`, `faculty-publications.html`, and `ai-upload.html` frame the faculty
-AI site, the Stanford Law School faculty AI publications list, and The AI Upload.
+`faculty.html` and `ai-upload.html` are full-page frames for the faculty AI site
+and The AI Upload. Each is the frame and nothing else: no header, no footer, no
+explanatory strip, and no theme toggle. These framed sites carry their own
+navigation and branding, so a bar of ours above one would put two sets of
+destinations on the same screen. `scripts/nav.py` skips these pages and fails
+loudly if either ever grows a `.siteHeader` block.
 
-Each is the frame and nothing else: no header, no footer, no explanatory strip, no
-theme toggle. The framed sites carry their own navigation and their own branding,
-so a bar of ours above one would put two sets of destinations on the same screen.
-`scripts/nav.py` skips these pages, and fails loudly if any ever grows a
-`.siteHeader` block.
+`faculty-publications.html` embeds the Stanford Law School faculty AI publications
+list within a standard hub page, preserving the hub header, footer, and navigation
+around the external content.
 
-Because there is no chrome to measure around, the frame is simply the viewport —
+For the two full-page frames, there is no chrome to measure around, so each frame is simply the viewport —
 `position: fixed; inset: 0`. Note that the design system copied from the faculty
 site contains a `.digestEmbed` rule that assumes 68px of chrome above the frame;
 nothing here uses it, and 68px is not what that bar actually measures.
