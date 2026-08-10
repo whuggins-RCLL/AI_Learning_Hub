@@ -1,0 +1,160 @@
+"""Write the canonical header and footer into every hub page.
+
+Ten static pages cannot each carry their own hand-typed copy of the navigation
+without drifting, so the copy lives here and this replaces the block in place.
+It is idempotent: the committed files stay plain HTML with no build step, and a
+future edit is an ordinary HTML edit. Run it again after changing the nav.
+"""
+
+import re
+import pathlib
+import sys
+
+# The repository root, relative to this file, so the script runs from anywhere.
+ROOT = pathlib.Path(__file__).resolve().parent.parent
+
+# The header bar, capped at six destinations. The faculty site measured six as the
+# point where a seventh link wraps the bar onto a second row at laptop widths, and
+# this bar carries the same logo and type at the same sizes. Everything else is
+# reachable from the footer.
+NAV = [
+    ("index.html", "Home"),
+    ("pause-rule.html", "The PAUSE Rule"),
+    ("tutorials.html", "Tutorials"),
+    ("ai-resources.html", "Resources"),
+    ("events.html", "Events"),
+    ("skills.html", "Skills"),
+]
+
+EXT = '<span class="externalLinkIcon" aria-hidden="true">&#8599;</span><span class="srOnly"> (opens in a new tab)</span>'
+
+
+def ext_link(href, label, note=None):
+    note_html = f'<span class="footerNote">{note}</span>' if note else ""
+    return (
+        f'<li><a href="{href}" target="_blank" rel="noopener noreferrer">{label}{EXT}</a>'
+        f"{note_html}</li>"
+    )
+
+
+def link(href, label, note=None):
+    note_html = f'<span class="footerNote">{note}</span>' if note else ""
+    return f'<li><a href="{href}">{label}</a>{note_html}</li>'
+
+
+FOOTER_GROUPS = [
+    (
+        "start",
+        "Start here",
+        [
+            ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes, start here"),
+            link("pause-rule.html", "The PAUSE Rule", "Decide whether to use AI at all"),
+            link("tutorials.html", "AI Tutorials"),
+            link("skills.html", "AI Skills", "Downloads for ChatGPT and Claude"),
+            link("install.html", "Install a skill"),
+        ],
+    ),
+    (
+        "community",
+        "Community and reading",
+        [
+            link("events.html", "Events and Curiosity Corners"),
+            link("past-events.html", "Past events", "Materials and recordings"),
+            link("ai-upload.html", "The AI Upload", "Weekly AI news digest"),
+            link("faculty.html", "Faculty AI site", "Sign-in required"),
+            ext_link("https://stanford.enterprise.slack.com/", "SLS Tech Chat on Slack", "#techchat"),
+        ],
+    ),
+    (
+        "elsewhere",
+        "Elsewhere at Stanford",
+        [
+            ext_link("https://law.stanford.edu/ai-initiative/", "SLS AI Initiative"),
+            ext_link("https://law.stanford.edu/robert-crown-law-library/", "Robert Crown Law Library"),
+            ext_link("https://uit.stanford.edu/security/responsibleai", "Responsible AI at Stanford"),
+            ext_link(
+                "https://law.stanford.edu/office-of-student-affairs/use-of-generative-ai-technology/",
+                "Use of Generative AI at SLS",
+            ),
+            ext_link("https://ai-at-rcll.vercel.app/", "AI in the Library display"),
+        ],
+    ),
+]
+
+
+def header_html(current):
+    links = []
+    for href, label in NAV:
+        cur = ' aria-current="page"' if href == current else ""
+        links.append(f'    <a href="{href}"{cur}>{label}</a>')
+    joined = "\n".join(links)
+    return f"""<header class="siteHeader">
+  <a class="headerLogo" href="index.html" aria-label="AI Learning Hub home">
+    <img src="assets/images/robert-crown-law-library-logo.svg" alt="Stanford Law School | Robert Crown Law Library" width="551" height="139" />
+  </a>
+  <button class="navToggleBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-nav">
+    <span class="hamburgerIcon" aria-hidden="true"><span></span><span></span><span></span></span>
+  </button>
+  <nav id="primary-nav" class="primaryNav" aria-label="Main navigation">
+{joined}
+  </nav>
+</header>"""
+
+
+def footer_html():
+    groups = []
+    for gid, heading, items in FOOTER_GROUPS:
+        lis = "\n".join(f"          {i}" for i in items)
+        groups.append(
+            f"""      <div class="footerGroup">
+        <h2 class="footerHeading" id="footer-{gid}">{heading}</h2>
+        <ul aria-labelledby="footer-{gid}">
+{lis}
+        </ul>
+      </div>"""
+        )
+    joined = "\n".join(groups)
+    return f"""<footer class="footer">
+  <div class="footer-inner">
+    <nav class="footerNav" aria-label="Site footer">
+{joined}
+    </nav>
+    <p class="footerHelp">
+      For AI tools, access, legal research, or technical assistance, email
+      <a href="mailto:library@law.stanford.edu">library@law.stanford.edu</a>
+    </p>
+  </div>
+</footer>"""
+
+
+HEADER_RE = re.compile(r'<header class="siteHeader">.*?</header>', re.S)
+FOOTER_RE = re.compile(r'<footer class="footer">.*?</footer>', re.S)
+
+
+def main():
+    pages = sorted(ROOT.glob("*.html"))
+    if not pages:
+        sys.exit("no pages found")
+    for page in pages:
+        text = page.read_text()
+        original = text
+
+        if not HEADER_RE.search(text):
+            sys.exit(f"{page.name}: no .siteHeader block to replace")
+        text = HEADER_RE.sub(lambda _: header_html(page.name), text, count=1)
+
+        # The two embed pages fill the viewport with a frame and carry no footer;
+        # a footer below an iframe that is already the full height would only be
+        # reachable by scrolling a page that does not scroll.
+        if FOOTER_RE.search(text):
+            text = FOOTER_RE.sub(lambda _: footer_html(), text, count=1)
+
+        if text != original:
+            page.write_text(text)
+            print(f"updated {page.name}")
+        else:
+            print(f"unchanged {page.name}")
+
+
+if __name__ == "__main__":
+    main()
