@@ -101,6 +101,12 @@
     });
   }
 
-  buildThemeToggle();
-  wireNav();
+  // The two embed pages are a frame and nothing else — no header to collapse and
+  // nothing of ours left to theme — so they do not load this file at all. The
+  // guard is here so that adding it back by accident cannot drop a floating
+  // toggle on top of the framed site, where it would change nothing visible.
+  if (!document.body.classList.contains("hasEmbed")) {
+    buildThemeToggle();
+    wireNav();
+  }
 })();
