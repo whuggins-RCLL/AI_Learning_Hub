@@ -51,6 +51,10 @@ FOOTER_GROUPS = [
         [
             ext_link("https://bit.ly/rcll-aiessentials", "AI Essentials Training", "10&ndash;15 minutes"),
             link("pause-rule.html", "The PAUSE Rule"),
+            # The tool directory is a destination in its own right, but the header
+            # row is capped at six, so it is reachable from the home page card and
+            # from here on every other page.
+            link("your-ai-stack.html", "Your AI Stack", "113 tools"),
             link("ai-in-the-library.html", "AI in the Library"),
             link("reading-list.html", "AI reading list"),
             link("past-events.html", "Past events"),
@@ -133,11 +137,14 @@ def footer_html():
 HEADER_RE = re.compile(r'<header class="siteHeader">.*?</header>', re.S)
 FOOTER_RE = re.compile(r'<footer class="footer">.*?</footer>', re.S)
 
-# The pages that are a full-viewport frame and nothing else. The framed
-# sites carry their own navigation, so putting this site's bar above one would
-# show a reader two sets of destinations at once. They get no header and no
-# footer, and this script leaves them alone.
-EMBED_PAGES = {"faculty.html", "faculty-publications.html", "ai-upload.html"}
+# The pages that are a full-viewport frame and nothing else, marked in the HTML
+# with <body class="hasEmbed">. The framed sites carry their own navigation, so
+# putting this site's bar above one would show a reader two sets of destinations
+# at once. They get no header and no footer, and this script leaves them alone.
+#
+# faculty-publications.html used to be on this list. It now keeps the hub bar
+# above its embed on purpose, so it is maintained like any other page.
+EMBED_PAGES = {"faculty.html", "ai-upload.html"}
 
 
 def main():
