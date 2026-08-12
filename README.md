@@ -33,6 +33,7 @@ python3 -m http.server 8000
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
 | `skills.html` | The eleven downloadable AI skills |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
+| `assets/install-a-skill-guide.pdf` | Printable skill-installation guide with clickable links to both videos |
 | `faculty.html` | Full-page embed of the faculty AI site |
 | `faculty-publications.html` | SLS faculty publications on AI, embedded within the hub navigation |
 | `ai-upload.html` | Full-page embed of The AI Upload, the weekly AI news digest |
