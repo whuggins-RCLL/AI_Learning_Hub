@@ -52,6 +52,10 @@ python3 -m http.server 8000
 | `assets/ai-stack-data.js` | The tool catalogue and the retired-product list (generated) |
 | `assets/ai-stack.js` | Browsing, filtering, comparing, and saving for Your AI Stack |
 | `assets/hub.js` | The theme toggle and the collapsing navigation |
+| `search.html` | Site search, answered in the browser |
+| `assets/search.js` | The matching and drawing behind it |
+| `assets/search-index.js` | The index it searches (generated) |
+| `scripts/build-search-index.mjs` | Builds that index from the rendered pages |
 
 All of it is ported from the previous AI Learning Hub, which was a set of
 standalone Tailwind and React pages, into the one design system below.
@@ -78,6 +82,38 @@ ordinary edit; re-run the script after changing a nav entry.
 ```
 python3 scripts/nav.py
 ```
+
+### Search
+
+The header search used to hand the query to Google with a `site:` filter. That only
+ever worked if Google had crawled the deployment, and it had not — so the box
+returned "did not match any documents" for words plainly on the page, which is
+worse than no search at all. It now goes to `search.html`, which answers from an
+index of this site and nothing else.
+
+The index is generated from the **rendered** pages rather than from the HTML,
+because three of them build their content from arrays at the bottom of the file
+(`tutorials.html`, `ai-in-the-library.html`, `your-ai-stack.html`); reading the DOM
+after render indexes what a reader actually sees, and keeps working if a page
+changes how it is built. Entries are per card where a page is built from cards and
+per id'd section otherwise, so a result links to the place it was found rather than
+the top of a long page.
+
+```
+node scripts/build-search-index.mjs            # write assets/search-index.js
+node scripts/build-search-index.mjs --check    # non-zero if it is out of date
+```
+
+Re-run it after editing page content and commit the result. It is the one script
+here that needs Playwright, so it is a maintainer step rather than a build step —
+`PLAYWRIGHT_PATH=/path/to/playwright/index.js` points it at a global install if you
+do not want a local dependency. The index is currently 441 entries and about 224 kB,
+loaded on `search.html` alone and nowhere else.
+
+Matching is prefix-per-word ("cita" finds "citation", "ation" does not), all terms
+must appear, and a heading hit outweighs a passing mention. Snippets are built as
+text nodes and `<mark>` elements rather than markup, so a query can never become
+HTML.
 
 ### Content that is data, not markup
 
@@ -162,10 +198,7 @@ Rule's gates and verdicts, the skill cards, the embed pages). Keeping the shared
 part an unmodified copy is deliberate: a change to the design system is a re-copy
 plus a look at the additions, not a merge.
 
-The static site search submits to Google and is scoped at runtime to the hostname
-serving the hub, so the repository remains portable without a search server or a
-hard-coded deployment domain. The hub has no account link because there is nothing
-to sign in to.
+The hub has no account link because there is nothing to sign in to.
 
 ### The embedded sites
 

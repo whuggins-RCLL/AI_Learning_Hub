@@ -2665,6 +2665,36 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 /* The screen recording sits in the same frame the guides give a screenshot. */
 video.mediaAsset { height: auto; border: 1px solid var(--glass-border); }
 
+/* ---- Site search -----------------------------------------------------------
+   search.html. The field is the page's one job, so it is sized like a hero
+   control rather than the small one in the header bar. */
+.searchField { display: flex; gap: 0.6rem; flex-wrap: wrap; margin: 1.4rem 0 0.6rem; max-width: 46rem; }
+.searchField input {
+  flex: 1 1 18rem; min-width: 0;
+  padding: 0.8rem 1.1rem; font-size: 1.02rem; color: var(--ink);
+  border-radius: 999px; border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+}
+.searchField input::placeholder { color: var(--muted); }
+.searchField .primary { flex: 0 0 auto; }
+.searchStatus { min-height: 1.4rem; margin: 0.4rem 0 0; color: var(--muted); font-size: 0.92rem; }
+
+.searchResults { list-style: none; margin: 1.2rem 0 0; padding: 0; display: grid; gap: 1.1rem; max-width: 78ch; }
+.searchResult { padding-bottom: 1.1rem; border-bottom: 1px solid var(--glass-hairline); }
+.searchResult:last-child { border-bottom: 0; }
+.searchResult h2 { margin: 0 0 0.2rem; font-size: 1.12rem; }
+.searchResult h2 a { text-decoration: none; }
+.searchResult h2 a:hover { text-decoration: underline; }
+/* Where the hit lives, when that is not already the result's own title. */
+.searchWhere { margin: 0 0 0.35rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); }
+.searchSnippet { margin: 0; color: var(--muted); font-size: 0.94rem; line-height: 1.6; }
+.searchSnippet mark {
+  background: rgba(169, 121, 31, 0.28); color: var(--ink);
+  border-radius: 3px; padding: 0 0.12em;
+}
+:root[data-theme="light"] .searchSnippet mark { background: rgba(169, 121, 31, 0.34); }
+
 /* ---- Audio explainer -------------------------------------------------------
    A Drive-hosted recording, framed like the install walkthroughs but sized for a
    player rather than a picture: an audio preview needs a bar, not sixteen-by-ten

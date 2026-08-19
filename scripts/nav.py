@@ -69,10 +69,9 @@ def header_html(current):
   <div class="headerNavigation">
     <div class="headerTools">
       <a class="homeButton" href="index.html">Home</a>
-      <form class="siteSearch" action="https://www.google.com/search" method="get" role="search">
+      <form class="siteSearch" action="search.html" method="get" role="search">
         <label class="srOnly" for="site-search">Search the AI Learning Hub</label>
         <input id="site-search" name="q" type="search" placeholder="Search" required />
-        <input class="siteSearchScope" name="sitesearch" type="hidden" value="" />
         <button type="submit">Search</button>
       </form>
     </div>
