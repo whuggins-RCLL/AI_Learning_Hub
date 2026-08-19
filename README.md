@@ -325,6 +325,14 @@ thing as a legal AI platform. It is an independent educational case study, not
 affiliated with or endorsed by Anthropic, and it says so at the top and the
 bottom.
 
+A 22-minute audio explainer of the same material is embedded beside the case
+study on `skills.html` and again near the top of the case study itself, framed
+from Google Drive rather than hosted here (the file is large, and the video on
+`writing-partner-agent.html` is the size of thing worth committing). The frame
+carries its duration and an "open in Google Drive" link beside it, because a
+third-party frame is the one element on a page that can fail silently — a
+sharing setting or a blocked frame leaves nothing behind.
+
 It uses the document look already in the design system — `.docPage`, `.docMeta`,
 `.docToc`, `.docPart`, `.module` — which the hub had inherited from the faculty
 site's globals but never used. The source document drew its diagrams as ASCII
