@@ -36,6 +36,8 @@ python3 -m http.server 8000
 | `scripts/build-skill-bundles.py` | Builds `assets/bundles/*.zip` from that manifest |
 | `assets/skill-bundles.js` | The download-them-separately button on the set cards |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
+| `case-study-anthropic-legal-skills.html` | Case study: reverse-engineering Anthropic's AI governance legal skills |
+| `assets/copy-code.js` | The copy button on the case study's skill template |
 | `assets/install-a-skill-guide.pdf` | Printable skill-installation guide with clickable links to both videos |
 | `faculty.html` | Full-page embed of the faculty AI site |
 | `faculty-publications.html` | SLS faculty publications on AI, embedded within the hub navigation |
@@ -251,6 +253,27 @@ browser prompts before saving several files at once and some refuse outright, so
 reliable one-click path has to be the single file. The button reads its file list from
 the download links already in the section it names (`data-bundle-source="#writing"`),
 which means a skill added to the page is in that set download as soon as its card is.
+
+### The case study
+
+`case-study-anthropic-legal-skills.html` is a long-form reading of Anthropic's
+open-source [Claude for Legal](https://github.com/anthropics/claude-for-legal)
+project (Apache-2.0) and its `ai-governance-legal` plugin: what a `SKILL.md` file
+is, why the plugin is ten small skills rather than one large one, what belongs in
+`references/`, `scripts/`, and `assets/`, and why an open skill is not the same
+thing as a legal AI platform. It is an independent educational case study, not
+affiliated with or endorsed by Anthropic, and it says so at the top and the
+bottom.
+
+It uses the document look already in the design system — `.docPage`, `.docMeta`,
+`.docToc`, `.docPart`, `.module` — which the hub had inherited from the faculty
+site's globals but never used. The source document drew its diagrams as ASCII
+art; those are rebuilt as ordinary elements (`.layerStack`, `.flowChain`,
+`.spectrumFig`, `.formulaFig`, `.codeBlock`), because ASCII art in a `<pre>`
+either scrolls sideways or shrinks past legibility on a phone. The page is
+entered from a card at the top of `skills.html`, above the sets: it answers
+"what am I actually installing, and how was it built?" before a reader takes ten
+files they have not opened.
 
 ### Shared principles
 
