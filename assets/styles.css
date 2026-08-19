@@ -2657,6 +2657,93 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .audienceList dd { margin: 0 0 0.55rem 1.6rem; font-size: 0.93rem; }
 .audienceList dd:last-child { margin-bottom: 0; }
 
+/* ---- Case study figures ----------------------------------------------------
+   case-study-anthropic-legal-skills.html reads the Anthropic repository like a
+   machine drawing, so it needs figures rather than prose in several places. The
+   source document drew those as ASCII art, which does not survive a phone: it
+   either scrolls sideways or shrinks past legibility. Each one is rebuilt here
+   as ordinary elements that reflow, so the diagram is readable at 320px and to a
+   screen reader, and inherits both themes. Nothing here is page-specific enough
+   to belong in a <style> block on that one page. */
+
+/* Code and file listings. Monospace, labelled with what the reader is looking
+   at, and scrolling inside its own box: a YAML line must not widen the page. */
+.codeBlock { margin: 1.2rem 0; border: 1px solid var(--glass-border); border-radius: 14px; background: var(--glass-bg-strong); overflow: hidden; }
+.codeHead {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; flex-wrap: wrap;
+  padding: 0.55rem 0.9rem; border-bottom: 1px solid var(--glass-hairline); background: var(--glass-bg);
+}
+.codeName { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.8rem; font-weight: 650; color: var(--muted); }
+.codeBlock pre { margin: 0; padding: 0.95rem 1.1rem; overflow-x: auto; }
+.codeBlock code {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.85rem; line-height: 1.65; color: var(--ink); white-space: pre;
+}
+.codeBlock .tok-key { color: var(--link); }
+.codeBlock .tok-com { color: var(--muted); }
+.codeCaption { margin: 0.5rem 0 0; font-size: 0.88rem; color: var(--muted); }
+
+/* Stacked layers: the legal AI stack, and the four kinds of file in a skill
+   folder. A row is a label plus a gloss, so it stays two lines on a phone. */
+.layerStack { margin: 1.3rem 0; border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; background: var(--glass-bg); }
+.layerRow { padding: 0.8rem 1.05rem; border-bottom: 1px solid var(--glass-hairline); }
+.layerRow:last-child { border-bottom: 0; }
+.layerRow.top { background: linear-gradient(135deg, rgba(140, 21, 21, 0.16), transparent 70%); }
+.layerRow.base { background: linear-gradient(135deg, rgba(169, 121, 31, 0.16), transparent 70%); }
+.layerName { display: block; font-weight: 700; font-size: 0.98rem; }
+.layerName code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.92rem; }
+.layerGloss { display: block; margin-top: 0.15rem; font-size: 0.88rem; color: var(--muted); }
+
+/* A sequence with an arrow between steps, and an optional fan of outcomes.
+   The arrow is a pseudo-element so it is decoration, not content a screen
+   reader has to read out between every step. */
+.flowChain { list-style: none; margin: 1.3rem 0; padding: 0; display: grid; gap: 1.35rem; justify-items: start; }
+.flowChain li { position: relative; margin: 0; padding: 0.6rem 1rem; border: 1px solid var(--glass-border); border-radius: 999px; background: var(--glass-bg); font-size: 0.93rem; }
+.flowChain li + li::before {
+  content: "↓"; position: absolute; left: 1.2rem; top: -1.15rem;
+  font-size: 0.95rem; line-height: 1; color: var(--gold);
+}
+.flowChain li.outcome { border-color: rgba(46, 158, 91, 0.4); }
+.flowBranch { list-style: none; margin: 0.75rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+/* The fan is parallel, not sequential: the chain's arrow must not repeat
+   between outcomes that all follow from the same step. */
+.flowBranch li + li::before { content: none; }
+.flowBranch li { margin: 0; padding: 0.5rem 0.95rem; border: 1px solid var(--glass-hairline); border-radius: 999px; background: var(--glass-bg-strong); font-size: 0.88rem; }
+
+/* Two ends of a spectrum with the players placed along it. Horizontal rather
+   than the source's vertical axis, because a wide bar reads better in a text
+   column than a tall one. */
+.spectrumFig { margin: 1.4rem 0; }
+.spectrumBar { height: 6px; border-radius: 999px; background: linear-gradient(90deg, var(--cardinal), var(--gold)); }
+.spectrumEnds { display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.5rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; color: var(--muted); }
+.spectrumMarks { display: flex; justify-content: space-between; gap: 1rem; margin: 0.9rem 0 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.spectrumMarks li { font-size: 0.92rem; max-width: 22ch; }
+.spectrumMarks li:last-child { text-align: right; }
+
+/* The skills inside one plugin, as the repository names them. Monospace because
+   these are directory names the reader can go and look at. */
+.jobList { list-style: none; margin: 1.2rem 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.jobList a {
+  display: inline-block; padding: 0.4rem 0.85rem; border-radius: 999px;
+  border: 1px solid var(--glass-hairline); background: var(--glass-bg-strong);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.84rem;
+  text-decoration: none; color: var(--ink);
+}
+.jobList a:hover { border-color: var(--link); color: var(--link); }
+
+/* skill + configuration + facts = result. */
+.formulaFig { display: flex; align-items: stretch; flex-wrap: wrap; gap: 0.7rem; margin: 1.4rem 0; }
+.formulaTerm { flex: 1 1 13rem; padding: 0.85rem 1rem; border: 1px solid var(--glass-border); border-radius: 14px; background: var(--glass-bg); }
+.formulaTerm.result { border-color: rgba(140, 21, 21, 0.45); background: linear-gradient(135deg, rgba(140, 21, 21, 0.14), var(--glass-bg) 60%); }
+.formulaTerm b { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.25rem; }
+.formulaOp { align-self: center; font-size: 1.2rem; font-weight: 700; color: var(--muted); }
+
+/* A long list of short items — the fifteen due-diligence questions — set in
+   columns so it does not become a screenful of one-line rows. */
+.splitList { margin: 1.1rem 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+.splitList li { margin-bottom: 0.4rem; break-inside: avoid; }
+@media (max-width: 620px) { .splitList { columns: 1; } .spectrumMarks li:last-child { text-align: left; } }
+
 /* ---- Skill sets ----------------------------------------------------------- */
 /* One-click sets, above the individual cards. A set is a single ZIP holding the
    skill ZIPs, so the primary action is an ordinary download link and looks like
