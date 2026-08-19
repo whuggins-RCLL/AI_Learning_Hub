@@ -2657,6 +2657,14 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .audienceList dd { margin: 0 0 0.55rem 1.6rem; font-size: 0.93rem; }
 .audienceList dd:last-child { margin-bottom: 0; }
 
+/* ---- In-page jumps on the landing pages ------------------------------------
+   The site header is fixed, so an anchor lands its target under the bar unless
+   the target reserves room. .docPage and .stackPage each declare their own
+   clearance; nothing covered the ordinary pages, so "jump to this section"
+   links on skills.html dropped the heading behind the header. 8rem clears the
+   bar at both its desktop and its phone height. */
+main section[id] { scroll-margin-top: 8rem; }
+
 /* ---- Case study figures ----------------------------------------------------
    case-study-anthropic-legal-skills.html reads the Anthropic repository like a
    machine drawing, so it needs figures rather than prose in several places. The
