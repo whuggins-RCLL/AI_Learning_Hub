@@ -2657,6 +2657,14 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .audienceList dd { margin: 0 0 0.55rem 1.6rem; font-size: 0.93rem; }
 .audienceList dd:last-child { margin-bottom: 0; }
 
+/* A long paste-me block — the agent instructions run to 1,300 words — scrolls
+   inside its own box rather than burying the rest of the page. The copy button
+   takes the whole text either way. */
+.codeBlock.long pre { max-height: 30rem; overflow: auto; }
+.codeBlock.long code { white-space: pre-wrap; }
+/* The screen recording sits in the same frame the guides give a screenshot. */
+video.mediaAsset { height: auto; border: 1px solid var(--glass-border); }
+
 /* ---- In-page jumps on the landing pages ------------------------------------
    The site header is fixed, so an anchor lands its target under the bar unless
    the target reserves room. .docPage and .stackPage each declare their own
