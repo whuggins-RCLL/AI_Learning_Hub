@@ -31,7 +31,10 @@ python3 -m http.server 8000
 | `assets/books.js` | Shared reading-list data and card renderer |
 | `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
-| `skills.html` | The eleven downloadable AI skills |
+| `skills.html` | The twenty-one downloadable AI skills, and the three one-click sets above them |
+| `skills/bundles.json` | Which skills each set holds, and in what order |
+| `scripts/build-skill-bundles.py` | Builds `assets/bundles/*.zip` from that manifest |
+| `assets/skill-bundles.js` | The download-them-separately button on the set cards |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `assets/install-a-skill-guide.pdf` | Printable skill-installation guide with clickable links to both videos |
 | `faculty.html` | Full-page embed of the faculty AI site |
@@ -203,6 +206,51 @@ one and upload it to ChatGPT or Claude; you never unzip it.
 - SLS CICERO Oral Argument Studio
 - SLS Gemini Notebook Learning Studio (formerly NotebookLM)
 - SLS AI Tool Explorer
+
+### Writing partner
+
+Ten review skills for a draft that is already written. Each acts as a reviewer, not a
+ghostwriter: it flags, explains, and locates, and hands the revision back to the
+student.
+
+1. SLS AI Use Gate — run first; is this AI use authorised here at all
+2. SLS Writing Review — the full workflow, and a Word review copy
+3. SLS Argument and Structure
+4. SLS Flow and Organisation
+5. SLS Clarity and Precision
+6. SLS Audience and Reception
+7. SLS Counterargument Stress Test
+8. SLS Claims and Source Traceability
+9. SLS Bluebook Audit
+10. SLS Genre Fit
+
+### Skill sets
+
+The top of `skills.html` offers three sets as one-click downloads: the Writing Partner
+Set (10), the Core Pathway Set (5), and the Tool Studios Set (6). A set is a single ZIP
+holding the member skill ZIPs **byte for byte**, plus a README naming what is inside and
+how to install it — so a set and the individual buttons below it hand out the same
+files, and there is no second copy of a skill to keep in step.
+
+`skills/bundles.json` says what is in each set; the ZIPs are generated, not committed by
+hand:
+
+```
+python3 scripts/build-skill-bundles.py          # rebuild assets/bundles/
+python3 scripts/build-skill-bundles.py --check  # non-zero if a rebuild would change a ZIP
+```
+
+Output is deterministic — fixed entry timestamps, stored (not re-compressed) members — so
+rebuilding without an input change produces no git diff. To add a set: add it to the
+manifest, run the script, and add a card to the Skill sets section of `skills.html`.
+
+The second button on each card, *Download the N skills separately*, is the progressive
+enhancement in `assets/skill-bundles.js`. It saves each skill ZIP individually, so they
+are upload-ready with nothing to unzip. It is deliberately not the primary action: a
+browser prompts before saving several files at once and some refuse outright, so the
+reliable one-click path has to be the single file. The button reads its file list from
+the download links already in the section it names (`data-bundle-source="#writing"`),
+which means a skill added to the page is in that set download as soon as its card is.
 
 ### Shared principles
 

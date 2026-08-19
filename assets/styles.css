@@ -2657,6 +2657,45 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 .audienceList dd { margin: 0 0 0.55rem 1.6rem; font-size: 0.93rem; }
 .audienceList dd:last-child { margin-bottom: 0; }
 
+/* ---- Skill sets ----------------------------------------------------------- */
+/* One-click sets, above the individual cards. A set is a single ZIP holding the
+   skill ZIPs, so the primary action is an ordinary download link and looks like
+   every other one on the page; the second button (added by skill-bundles.js and
+   absent without it) fetches the same skills as separate files. */
+.bundleGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(0.9rem, 2vw, 1.3rem); }
+.bundleCard { display: flex; flex-direction: column; }
+/* The lead set runs the full width: it is the one a reader is meant to take,
+   and it is the only card with room to name what is inside it. */
+.bundleCard.featured { grid-column: 1 / -1; background: var(--glass-bg-strong); }
+.bundleHead { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.bundleCard h3 { margin: 0 0 0.5rem; font-size: 1.15rem; }
+.bundleCard.featured h3 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+.bundleCard .desc { color: var(--muted); font-size: 0.94rem; margin-bottom: 1rem; max-width: 72ch; }
+.pill.set .dot { background: var(--cardinal-bright); }
+/* What is in the set, as plain text rather than ten more download buttons —
+   the individual buttons are in the section the card links to. */
+.bundleContents { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 1.15rem; padding: 0; }
+.bundleContents li {
+  font-size: 0.78rem; color: var(--muted);
+  background: var(--glass-bg); border: 1px solid var(--glass-hairline);
+  border-radius: 999px; padding: 0.26rem 0.68rem;
+}
+.bundleFoot {
+  margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--glass-hairline);
+  display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+}
+.bundleFoot .downloadButton, .bundleFoot .secondary { min-height: 44px; padding: 0.6rem 1.1rem; font-size: 0.9rem; }
+.bundleFoot .downloadButton svg { width: 16px; height: 16px; }
+.bundleFoot .textLink { font-size: 0.88rem; }
+/* Pushed to the end of the row so the two buttons stay paired at the left. */
+.bundleNote { font-size: 0.8rem; color: var(--muted); margin-left: auto; }
+.bundleStatus { font-size: 0.82rem; color: var(--muted); }
+.bundleSeparate[disabled] { opacity: 0.6; cursor: progress; transform: none; }
+@media (max-width: 860px) {
+  .bundleGrid { grid-template-columns: 1fr; }
+  .bundleNote { margin-left: 0; }
+}
+
 /* ---- Skill cards ---------------------------------------------------------- */
 /* The download grid. A card is a fixed shape with the button pinned to the
    bottom, so a two-line description in one card does not lift its button above
