@@ -2805,6 +2805,11 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 @media (max-width: 1080px) { .skillGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .skillGrid { grid-template-columns: 1fr; } }
 
+/* The practice drafts reuse .skillCard, plus one line naming the skills each
+   draft is worth running. */
+.sampleTry { margin: -0.4rem 0 1rem; font-size: 0.84rem; color: var(--muted); }
+.sampleTry b { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold); margin-bottom: 0.15rem; }
+
 /* ---- Install walkthroughs ------------------------------------------------- */
 /* A numbered list that is genuinely ordered, so it is an <ol> with the counter
    drawn in the cardinal disc the faculty site uses for .moduleNum. */

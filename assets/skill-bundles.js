@@ -28,8 +28,11 @@
   function linksIn(selector) {
     var section = document.querySelector(selector);
     if (!section) return [];
+    // Scoped to the card grid, not the whole section: a section can also carry
+    // downloads that are not skills — the practice drafts are Word documents —
+    // and those must never be swept into a set.
     return Array.prototype.slice.call(
-      section.querySelectorAll("a.downloadButton[download]")
+      section.querySelectorAll(".skillGrid a.downloadButton[download]")
     );
   }
 
