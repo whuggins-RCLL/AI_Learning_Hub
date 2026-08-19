@@ -31,7 +31,7 @@ python3 -m http.server 8000
 | `assets/books.js` | Shared reading-list data and card renderer |
 | `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
-| `skills.html` | The twenty-one downloadable AI skills, and the three one-click sets above them |
+| `skills.html` | The twenty-one downloadable AI skills, the three one-click sets, and the practice drafts |
 | `skills/bundles.json` | Which skills each set holds, and in what order |
 | `scripts/build-skill-bundles.py` | Builds `assets/bundles/*.zip` from that manifest |
 | `assets/skill-bundles.js` | The download-them-separately button on the set cards |
@@ -39,6 +39,7 @@ python3 -m http.server 8000
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `case-study-anthropic-legal-skills.html` | Case study: reverse-engineering Anthropic's AI governance legal skills |
 | `writing-partner-agent.html` | Loading the ten writing skills into one ChatGPT agent |
+| `teach-this-writing-partner.html` | Workshop packet: set-up, activities, discussion, notes, glossary |
 | `assets/writing-partner-agent-instructions.md` | The text a student pastes into that agent (source of truth) |
 | `scripts/inject-agent-instructions.py` | Copies that file into the page's copy box |
 | `assets/copy-code.js` | The copy button on the case study's skill template |
@@ -273,6 +274,19 @@ browser prompts before saving several files at once and some refuse outright, so
 reliable one-click path has to be the single file. The button reads its file list from
 the download links already in the section it names (`data-bundle-source="#writing"`),
 which means a skill added to the page is in that set download as soon as its card is.
+
+### The teaching packet
+
+`teach-this-writing-partner.html` is a session built entirely from what is already
+on the site: set-up in ChatGPT, in Claude, and as an agent; five activities to pick
+from; five sets of discussion questions with what to listen for; an explainer note
+on each of the ten skills and on the case study; three run plans (60 minutes, 90
+minutes, self-paced); and a glossary. It is written to be usable by faculty running
+it for a class and by a student working alone, which is why every activity states
+its own materials and time rather than depending on the one before it.
+
+It is also the page that names Stanford's own ChatGPT Edu and Claude services, so
+nobody sets this up on a personal account.
 
 ### The Writing Partner agent
 
