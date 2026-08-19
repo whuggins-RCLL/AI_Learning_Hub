@@ -38,6 +38,9 @@ python3 -m http.server 8000
 | `assets/writing-samples/` | Five fictional student drafts to practise the writing skills on |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `case-study-anthropic-legal-skills.html` | Case study: reverse-engineering Anthropic's AI governance legal skills |
+| `writing-partner-agent.html` | Loading the ten writing skills into one ChatGPT agent |
+| `assets/writing-partner-agent-instructions.md` | The text a student pastes into that agent (source of truth) |
+| `scripts/inject-agent-instructions.py` | Copies that file into the page's copy box |
 | `assets/copy-code.js` | The copy button on the case study's skill template |
 | `assets/install-a-skill-guide.pdf` | Printable skill-installation guide with clickable links to both videos |
 | `faculty.html` | Full-page embed of the faculty AI site |
@@ -270,6 +273,32 @@ browser prompts before saving several files at once and some refuse outright, so
 reliable one-click path has to be the single file. The button reads its file list from
 the download links already in the section it names (`data-bundle-source="#writing"`),
 which means a skill added to the page is in that set download as soon as its card is.
+
+### The Writing Partner agent
+
+`writing-partner-agent.html` is the set-up guide for loading all ten writing
+skills into a single ChatGPT agent instead of uploading them chat by chat: create
+a blank agent, name it, add the ten ZIPs (still zipped), paste in the
+instructions, attach the course syllabus or style guide, and test it on a practice
+draft. It says at the top, before anything else, that this is not for a course
+that does not permit AI use, and it tells students to build one agent per course
+and to verify every finding rather than accepting the review.
+
+The instructions a student pastes — a role, the reviewer-not-ghostwriter boundary,
+and nine human-review checkpoints — live in
+`assets/writing-partner-agent-instructions.md`. That file is the source of truth
+and is offered on the page as a download; the same text also sits in the page's
+copy box, put there by:
+
+```
+python3 scripts/inject-agent-instructions.py          # rewrite the copy box
+python3 scripts/inject-agent-instructions.py --check  # non-zero if the two differ
+```
+
+Edit the Markdown, run the script, and the page follows. The page also carries a
+15-second screen recording (`assets/video/`, H.264/AAC, 1.4 MB) served directly
+rather than framed from Drive like the two recordings on `install.html`, because
+this one is ours to host.
 
 ### The case study
 
