@@ -35,6 +35,7 @@ python3 -m http.server 8000
 | `skills/bundles.json` | Which skills each set holds, and in what order |
 | `scripts/build-skill-bundles.py` | Builds `assets/bundles/*.zip` from that manifest |
 | `assets/skill-bundles.js` | The download-them-separately button on the set cards |
+| `assets/writing-samples/` | Five fictional student drafts to practise the writing skills on |
 | `install.html` | What a skill file is, and how to install one in ChatGPT or Claude |
 | `case-study-anthropic-legal-skills.html` | Case study: reverse-engineering Anthropic's AI governance legal skills |
 | `assets/copy-code.js` | The copy button on the case study's skill template |
@@ -225,6 +226,22 @@ student.
 8. SLS Claims and Source Traceability
 9. SLS Bluebook Audit
 10. SLS Genre Fit
+
+### Practice drafts
+
+`assets/writing-samples/` holds five fictional student drafts — a case brief, three
+memos of increasing length and citation density, and a timed exam answer — offered
+on `skills.html` under **Practice drafts**. They exist so a student can watch a
+review skill work on someone else's writing before handing it their own, so each
+one has real problems in it. Everything in them is invented, including the student
+authors, and the page says so in a caution above the cards: no authority cited in
+them should be relied on, and none of them is a model answer.
+
+The section is a sibling of the writing-partner grid rather than part of it. The
+set card's *download the N skills separately* button collects the download links
+inside the section it names, and these are Word documents, not skills; the button's
+selector is also scoped to `.skillGrid` so a future non-skill download cannot be
+swept into a set either.
 
 ### Skill sets
 
