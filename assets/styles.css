@@ -2665,6 +2665,25 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 /* The screen recording sits in the same frame the guides give a screenshot. */
 video.mediaAsset { height: auto; border: 1px solid var(--glass-border); }
 
+/* ---- Audio explainer -------------------------------------------------------
+   A Drive-hosted recording, framed like the install walkthroughs but sized for a
+   player rather than a picture: an audio preview needs a bar, not sixteen-by-ten
+   of empty black. The frame is capped short and the surrounding block carries
+   the duration and a way out, because a framed player is the one element on the
+   page that can silently fail — a signed-out reader, a blocked third-party
+   frame, or a sharing setting can each leave it blank. */
+.audioEmbed { margin: 1.2rem 0 0; }
+.audioEmbedFrame {
+  width: 100%; height: 10.5rem; margin: 0.7rem 0 0.6rem;
+  border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.25);
+}
+.audioEmbedFrame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.audioEmbedMeta { display: flex; align-items: center; gap: 0.5rem 1rem; flex-wrap: wrap; font-size: 0.86rem; color: var(--muted); margin: 0; }
+/* Inside a cross-promo card the player takes a row of its own beneath the text
+   and the button, rather than squeezing into the column beside them. */
+.crossPromo .audioEmbed { flex: 1 1 100%; margin-top: 0.4rem; padding-top: 1.1rem; border-top: 1px solid var(--glass-hairline); }
+
 /* ---- In-page jumps on the landing pages ------------------------------------
    The site header is fixed, so an anchor lands its target under the bar unless
    the target reserves room. .docPage and .stackPage each declare their own
