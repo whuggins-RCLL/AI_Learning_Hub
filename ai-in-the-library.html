@@ -166,10 +166,10 @@
 // seven categories and twenty-four panels. The thirty-two books live in
 // assets/books.js so this page and reading-list.html share one shelf.
 //
-// Two things from the original app are deliberately absent. The Gemini "AI
-// Curator" chat needed an API key, and on a public static site a client-side key
-// is a published key. The reading-list PDF export needed jsPDF; the SearchWorks
-// link on each book is the durable version of the same thing.
+// The Gemini "AI Curator" chat is deliberately absent: it needed an API key, and
+// on a public static site a client-side key is a published key. The reading-list
+// PDF is back, but built at author time by scripts/generate-reading-list-pdf.py
+// from this same shelf rather than by shipping jsPDF to every reader.
 const CATEGORIES = [
   {
     id: "resources", title: "Law Library Resources", subtitle: "Tools and training",
@@ -421,6 +421,7 @@ const sections = CATEGORIES.map((cat) => {
       ? `<div class="readingShelfHead">
            <h3>On the shelf &mdash; ${books.length} titles</h3>
            <p class="muted" style="max-width:70ch;">Every title is held by Stanford Libraries; each links to its SearchWorks record. <a href="reading-list.html">Open the reading list on its own page</a>.</p>
+           <div class="actions"><a class="secondary" href="assets/ai-reading-list.pdf" download="sls-ai-reading-list.pdf" aria-label="Download the AI reading list as a PDF, 32 titles with catalogue links">Download the list (PDF)</a></div>
          </div>
          <div class="bookGrid" id="exhibit-book-grid"></div>`
       : "";
