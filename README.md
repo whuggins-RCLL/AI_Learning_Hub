@@ -29,6 +29,8 @@ python3 -m http.server 8000
 | `ai-in-the-library.html` | The library's AI display: 7 parts, 24 panels, 32 books |
 | `reading-list.html` | The 32-book shelf on its own page (same data as the display) |
 | `assets/books.js` | Shared reading-list data and card renderer |
+| `assets/ai-reading-list.pdf` | The same shelf as a printable PDF, with clickable SearchWorks links |
+| `scripts/generate-reading-list-pdf.py` | Builds that PDF from `assets/books.js` |
 | `events.html` | Curiosity Corners, trainings, the Tech Club charter, and the calendar |
 | `past-events.html` | Archive of past sessions and Tech Club meetings |
 | `skills.html` | The twenty-one downloadable AI skills, the three one-click sets, and the practice drafts |
@@ -180,8 +182,22 @@ Two of the app's features did **not** come across, and both were deliberate:
   `VITE_API_KEY` into the client bundle, so on a public static site that key is a
   published key. The hub has no build step and no secret handling, and adding both to
   carry one chat widget was not the trade we wanted.
-- **The reading-list PDF export**, which needed jsPDF. Each book's SearchWorks link
-  is the durable version of the same thing.
+- **The reading-list PDF export**, which needed jsPDF in the browser. The PDF is
+  offered again on both pages, but it is built once at author time instead:
+  `scripts/generate-reading-list-pdf.py` reads `assets/books.js` and writes
+  `assets/ai-reading-list.pdf`, so no reader downloads a PDF library to get one, and
+  the file cannot drift from the shelf. It uses no third-party packages — the same
+  hand-written PDF writer as the installation guide — and its output is
+  deterministic, so rebuilding without a change to the books produces no git diff.
+
+  ```
+  python3 scripts/generate-reading-list-pdf.py          # rewrite assets/ai-reading-list.pdf
+  python3 scripts/generate-reading-list-pdf.py --check  # non-zero if a rebuild would change it
+  ```
+
+  Each of the thirty-two entries carries its title, author, publisher, date, ISBN, the
+  annotation from the shelf, and a clickable link to its SearchWorks record; an entry is
+  never split across a page break. Re-run the script after editing `assets/books.js`.
 
 The app also fetched book covers at runtime from the Open Library and Google Books
 APIs. Covers here come from Open Library by ISBN as a plain image URL
