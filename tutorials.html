@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark light" />
 <title>AI Tutorials | AI Learning Hub | Stanford Law School</title>
-<meta name="description" content="Self-paced AI tutorials from the Robert Crown Law Library at Stanford Law School: foundational skills, writing and editing, curriculum design, creative design, building custom AI, vibe coding, data and research, and legal practice." />
+<meta name="description" content="Self-paced AI tutorials from the Robert Crown Law Library at Stanford Law School: foundational skills, writing and editing, curriculum design, creative design, building custom AI, building and prototyping, data and research, and legal practice." />
 <link rel="stylesheet" href="assets/styles.css" />
 <script>try{document.documentElement.setAttribute('data-theme',localStorage.getItem('theme')==='light'?'light':'dark')}catch(e){document.documentElement.setAttribute('data-theme','dark')}</script>
 </head>
@@ -201,36 +201,15 @@ const SECTIONS = [
     ]
   },
   {
-    title: "Vibe coding",
-    desc: 'All vibe-coding tutorials live on their own dedicated site at <a href="https://sls-vibe-code.vercel.app/" target="_blank" rel="noopener noreferrer">sls-vibe-code.vercel.app</a>. The site itself is vibe-coded &mdash; a working example of what you can build using these techniques.',
+    title: "Building and prototyping",
+    desc: 'Two long-form guides, both written for people who do not code. They pair: build something with an API, then publish it where people can find it.',
     items: [
-      { t: "Vibe Coding 101", c: "Hands-on lesson", cta: "Start lesson",
-        d: "A comprehensive introduction to the philosophy and practice of vibe coding.",
-        url: "https://sls-vibe-code.vercel.app/#/intro" },
-      { t: "APIs", c: "Hands-on lesson", cta: "Start lesson",
-        d: "Learn the basics of APIs and how to integrate them into your vibe-coding projects.",
-        url: "https://sls-vibe-code.vercel.app/#/apis" },
-      { t: "Google Stitch", c: "Resource guide", cta: "View guide",
-        d: "An AI-powered tool to generate high-quality user interfaces for mobile and web apps from text prompts.",
-        url: "https://sls-vibe-code.vercel.app/#/stitch" },
-      { t: "GitHub Portfolio Guide", c: "Resource guide", cta: "View guide",
-        d: "How to build and showcase your AI projects in a professional GitHub portfolio.",
-        url: "https://sls-vibe-code.vercel.app/#/github" },
-      { t: "Kaggle and Google AI Studio", c: "Resource guide", cta: "View guide",
-        d: "Learn Kaggle and build apps in Google AI Studio.",
-        url: "https://sls-vibe-code.vercel.app/#/kaggle" },
-      { t: "HTML Academy", c: "Hands-on lesson", cta: "Start lesson",
-        d: "Learn the fundamentals of HTML, the building block of the web.",
-        url: "https://sls-vibe-code.vercel.app/#/html-academy" },
-      { t: "Website Stack Explained", c: "Resource guide", cta: "View guide",
-        d: "Understand the different layers and technologies that make up a modern website.",
-        url: "https://sls-vibe-code.vercel.app/#/stack-explained" },
-      { t: "The Vibe Mindset", c: "Conceptual guide", cta: "Read the guide",
-        d: "Adopt the right mindset for successful and creative vibe coding.",
-        url: "https://sls-vibe-code.vercel.app/#/vibe-mindset" },
-      { t: "The Self-Aware Website", c: "Conceptual guide", cta: "Read the guide",
-        d: "Explore concepts around building websites that can understand and adapt to their context.",
-        url: "https://sls-vibe-code.vercel.app/#/self-aware" }
+      { t: "Understanding APIs", c: "Seven-module course", cta: "Start the course",
+        d: "How software asks other software for things and gets an answer back &mdash; seven recorded modules from the first request through authentication, architecture, and testing, with the lab snippets and a status-code reference on the page.",
+        url: "api-course.html", internal: true },
+      { t: "Your First GitHub Portfolio", c: "Eighteen-part guide", cta: "Open the guide",
+        d: "Put your AI work somewhere people expect to look. Eighteen short parts, entirely through a browser: an account, a profile README, three projects that need no code, and a thirty-day launch plan.",
+        url: "github-portfolio.html", internal: true }
     ]
   },
   {

@@ -390,7 +390,10 @@ a.card:hover, .card.interactive:hover {
 .pill.planned .dot { background: #9a9088; }
 
 /* ---- Steps / notes / tables ------------------------------------------------ */
-.steps { display: grid; gap: 1rem; }
+/* The single column is declared rather than left implicit: an auto-sized track
+   takes its width from the widest item's max-content, so one step holding a code
+   block pushed a whole page sideways on a phone. */
+.steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 .step {
   position: relative;
   padding: 1.1rem 1.2rem 1.1rem 1.35rem;
@@ -2335,7 +2338,8 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
 
 /* ---- Print: the guides should come out of a printer as a clean handout ----- */
 @media print {
-  .siteHeader, .footer, .themeToggle, .skip, .copyBtn, .docNav, .siteSearch { display: none !important; }
+  .siteHeader, .footer, .themeToggle, .skip, .copyBtn, .docNav, .siteSearch,
+  .tutorialVideo, .installVideo, .audioEmbedFrame { display: none !important; }
   body { background: #fff; color: #000; }
   body::before { display: none; }
   main { max-width: none; padding: 0; }
@@ -2346,7 +2350,7 @@ a.card.tutorialCard { display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.1
   .panel::before, .card::before, .videoDemo::before { display: none; }
   a { color: #000; text-decoration: underline; }
   .eyebrow, .muted, .docMeta dt { color: #444 !important; }
-  .module, .step, .promptBlock, .mediaPlaceholder, .doneWhen { break-inside: avoid; }
+  .module, .step, .promptBlock, .mediaPlaceholder, .doneWhen, .dayCard { break-inside: avoid; }
   h1, h2, h3 { break-after: avoid; }
   .mediaFrame { aspect-ratio: auto !important; min-height: 6rem; }
 
@@ -2896,6 +2900,28 @@ main section[id] { scroll-margin-top: 8rem; }
   border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.25);
 }
 .installVideo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* Same frame for the recordings that carry a tutorial module, at the 16:9 the
+   API course was recorded in. Separate from .installVideo because that one is
+   tied to the skill-install page and its 16:10 captures. */
+.tutorialVideo {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  margin: 0.9rem 0 1.1rem; border-radius: 14px; overflow: hidden;
+  border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.25);
+}
+.tutorialVideo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* The 30-day launch plan: one small card per day, as many to a row as fit and
+   down to one on a phone. A day is a title and two or three check boxes, so a
+   full .grid column would leave each card mostly empty. */
+.dayGrid {
+  display: grid; gap: 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  margin-top: 1.1rem;
+}
+.dayCard { padding: 0.95rem 1.1rem; }
+.dayCard h3 { margin: 0.15rem 0 0.5rem; font-size: 1.02rem; }
+.dayCard .checkList li { font-size: 0.9rem; }
 
 /* ---- Full-page embeds ----------------------------------------------------
    The faculty sites and The AI Upload are shown whole, and nothing of this site
